@@ -19,7 +19,6 @@
             background: #f7fafc;
         }
 
-        /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
             color: white;
@@ -126,7 +125,6 @@
             transform: translateY(-3px);
         }
 
-        /* Container */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -154,7 +152,6 @@
             margin-right: auto;
         }
 
-        /* AI Generator Section */
         .ai-generator {
             background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
             padding: 80px 20px;
@@ -218,6 +215,7 @@
             border-radius: 12px;
             font-size: 1em;
             transition: all 0.3s;
+            font-family: inherit;
         }
 
         .input-group input:focus,
@@ -245,7 +243,7 @@
             gap: 10px;
         }
 
-        .generate-btn:hover {
+        .generate-btn:hover:not(:disabled) {
             transform: translateY(-3px);
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
         }
@@ -253,7 +251,6 @@
         .generate-btn:disabled {
             opacity: 0.6;
             cursor: not-allowed;
-            transform: none;
         }
 
         .result-box {
@@ -293,19 +290,11 @@
             white-space: pre-wrap;
         }
 
-        .loading {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #667eea;
-            font-weight: 600;
-        }
-
         .spinner {
             width: 20px;
             height: 20px;
-            border: 3px solid #e2e8f0;
-            border-top-color: #667eea;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-top-color: white;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
         }
@@ -314,7 +303,72 @@
             to { transform: rotate(360deg); }
         }
 
-        /* Challenge Categories */
+        .api-settings {
+            background: #f7fafc;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            border: 2px solid #e2e8f0;
+        }
+
+        .api-settings h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+
+        .api-provider {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .provider-btn {
+            padding: 12px 25px;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .provider-btn.active {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        .api-note {
+            padding: 15px;
+            background: #fef3c7;
+            border-radius: 10px;
+            border-left: 4px solid #f59e0b;
+            color: #92400e;
+            font-size: 0.9em;
+            margin-top: 15px;
+        }
+
+        .success-note {
+            padding: 15px;
+            background: #d1fae5;
+            border-radius: 10px;
+            border-left: 4px solid #10b981;
+            color: #065f46;
+            font-size: 0.9em;
+            margin-top: 15px;
+        }
+
+        .error-note {
+            padding: 15px;
+            background: #fee2e2;
+            border-radius: 10px;
+            border-left: 4px solid #ef4444;
+            color: #991b1b;
+            font-size: 0.9em;
+            margin-top: 15px;
+        }
+
         .categories-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -342,12 +396,6 @@
         .category-icon {
             font-size: 4em;
             margin-bottom: 20px;
-            display: inline-block;
-            transition: transform 0.3s;
-        }
-
-        .category-card:hover .category-icon {
-            transform: scale(1.2) rotate(5deg);
         }
 
         .category-title {
@@ -377,132 +425,6 @@
             background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
         }
 
-        /* Active Challenges */
-        .challenges-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .challenge-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s;
-        }
-
-        .challenge-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
-        }
-
-        .challenge-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-
-        .challenge-icon {
-            font-size: 3.5em;
-            margin-bottom: 15px;
-        }
-
-        .challenge-title {
-            font-size: 1.5em;
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        .challenge-content {
-            padding: 30px;
-        }
-
-        .challenge-desc {
-            color: #718096;
-            line-height: 1.7;
-            margin-bottom: 20px;
-        }
-
-        .challenge-meta {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-top: 2px solid #e2e8f0;
-            font-size: 0.95em;
-            color: #718096;
-        }
-
-        .ai-tip-box {
-            background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%);
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 20px;
-            border-left: 4px solid #0ea5e9;
-        }
-
-        .ai-tip-box h4 {
-            color: #0369a1;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .ai-tip-content {
-            color: #075985;
-            line-height: 1.6;
-        }
-
-        /* API Settings */
-        .api-settings {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
-            margin-bottom: 40px;
-        }
-
-        .api-settings h3 {
-            color: #667eea;
-            margin-bottom: 20px;
-        }
-
-        .api-provider {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .provider-btn {
-            padding: 12px 25px;
-            background: #f7fafc;
-            border: 2px solid #e2e8f0;
-            border-radius: 10px;
-            cursor: pointer;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .provider-btn.active {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-        }
-
-        .api-note {
-            padding: 15px;
-            background: #fef3c7;
-            border-radius: 10px;
-            border-left: 4px solid #f59e0b;
-            color: #92400e;
-            font-size: 0.9em;
-            margin-top: 15px;
-        }
-
-        /* Footer */
         .footer {
             background: #2d3748;
             color: white;
@@ -515,7 +437,6 @@
             opacity: 0.9;
         }
 
-        /* Floating ChaiCheers Button */
         .floating-btn {
             position: fixed;
             bottom: 30px;
@@ -539,44 +460,32 @@
         }
 
         @keyframes pulse {
-            0%, 100% {
-                box-shadow: 0 10px 40px rgba(245, 87, 108, 0.4);
-            }
-            50% {
-                box-shadow: 0 10px 40px rgba(245, 87, 108, 0.7);
-            }
+            0%, 100% { box-shadow: 0 10px 40px rgba(245, 87, 108, 0.4); }
+            50% { box-shadow: 0 10px 40px rgba(245, 87, 108, 0.7); }
         }
 
-        /* Responsive */
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .action-buttons button {
+            flex: 1;
+        }
+
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5em;
-            }
-
-            .section-title {
-                font-size: 2em;
-            }
-
-            .generator-container {
-                padding: 30px 20px;
-            }
-
-            .categories-grid,
-            .challenges-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .floating-btn {
-                bottom: 20px;
-                right: 20px;
-                padding: 12px 24px;
-                font-size: 0.95em;
-            }
+            .hero h1 { font-size: 2.5em; }
+            .section-title { font-size: 2em; }
+            .generator-container { padding: 30px 20px; }
+            .categories-grid { grid-template-columns: 1fr; }
+            .floating-btn { bottom: 20px; right: 20px; padding: 12px 24px; font-size: 0.95em; }
+            .api-provider { flex-direction: column; }
+            .action-buttons { flex-direction: column; }
         }
     </style>
 </head>
 <body>
-    <!-- Hero Section -->
     <div class="hero">
         <div style="max-width: 900px; margin: 0 auto; position: relative; z-index: 1;">
             <h1>⚡ ZENSTARS ⚡</h1>
@@ -590,39 +499,40 @@
         </div>
     </div>
 
-    <!-- AI Challenge Generator -->
     <div class="ai-generator" id="generator">
         <div class="container">
             <h2 class="section-title">🤖 AI Challenge Generator</h2>
             <p class="section-subtitle">Let AI create personalized challenges based on your preferences</p>
             
             <div class="generator-container">
-                <!-- API Settings -->
                 <div class="api-settings">
                     <h3>⚙️ AI Provider Settings</h3>
                     <div class="api-provider">
-                        <button class="provider-btn active" onclick="selectProvider('groq')">Groq (Fast & Free)</button>
-                        <button class="provider-btn" onclick="selectProvider('huggingface')">HuggingFace</button>
-                        <button class="provider-btn" onclick="selectProvider('together')">Together AI</button>
+                        <button class="provider-btn active" data-provider="groq">Groq (Fast & Free)</button>
+                        <button class="provider-btn" data-provider="huggingface">HuggingFace</button>
+                        <button class="provider-btn" data-provider="together">Together AI</button>
                     </div>
                     <div class="input-group">
                         <label>API Key (Optional - Get from provider's website)</label>
                         <input type="password" id="apiKey" placeholder="Enter your API key for better rate limits">
                     </div>
                     <div class="api-note">
-                        💡 <strong>Free Tier Available:</strong> All providers offer free tiers. Sign up at their websites for API keys to unlock higher rate limits.
+                        💡 <strong>Free Access:</strong> All providers offer free tiers. For unlimited use, sign up and add your API key above.
+                        <br><br>
+                        <strong>Get API Keys:</strong><br>
+                        • Groq: <a href="https://console.groq.com" target="_blank" style="color: #667eea;">console.groq.com</a><br>
+                        • HuggingFace: <a href="https://huggingface.co/settings/tokens" target="_blank" style="color: #667eea;">huggingface.co/settings/tokens</a><br>
+                        • Together: <a href="https://api.together.xyz" target="_blank" style="color: #667eea;">api.together.xyz</a>
                     </div>
                 </div>
 
-                <!-- Generation Options -->
                 <div class="generator-options">
-                    <button class="option-btn active" onclick="selectMode('new')">✨ New Challenge</button>
-                    <button class="option-btn" onclick="selectMode('variation')">🔄 Variation</button>
-                    <button class="option-btn" onclick="selectMode('tips')">💡 Get Tips</button>
-                    <button class="option-btn" onclick="selectMode('judging')">⚖️ Judging Criteria</button>
+                    <button class="option-btn active" data-mode="new">✨ New Challenge</button>
+                    <button class="option-btn" data-mode="variation">🔄 Variation</button>
+                    <button class="option-btn" data-mode="tips">💡 Get Tips</button>
+                    <button class="option-btn" data-mode="judging">⚖️ Judging Criteria</button>
                 </div>
 
-                <!-- Input Fields -->
                 <div id="inputFields">
                     <div class="input-group">
                         <label>Challenge Category</label>
@@ -660,24 +570,25 @@
                     </div>
                 </div>
 
-                <!-- Generate Button -->
-                <button class="generate-btn" id="generateBtn" onclick="generateChallenge()">
+                <button class="generate-btn" id="generateBtn">
                     <span>🚀</span>
                     <span>Generate with AI</span>
                 </button>
 
-                <!-- Result Box -->
                 <div class="result-box" id="resultBox">
                     <h3 id="resultTitle">Generated Challenge</h3>
                     <div class="result-content" id="resultContent"></div>
-                    <button class="btn btn-primary" style="margin-top: 20px;" onclick="saveChallenge()">💾 Save Challenge</button>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="saveChallenge()">💾 Save Challenge</button>
+                        <button class="btn btn-secondary" onclick="shareChallenge()">📤 Share</button>
+                        <button class="btn btn-secondary" onclick="regenerate()">🔄 Regenerate</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Challenge Categories -->
-    <div class="container">
+    <div class="container" id="challenges">
         <h2 class="section-title">🎯 Challenge Categories</h2>
         <p class="section-subtitle">Pick your passion and start competing today!</p>
         
@@ -726,72 +637,6 @@
         </div>
     </div>
 
-    <!-- Active Challenges -->
-    <div class="container" id="challenges">
-        <h2 class="section-title">🏆 Active Challenges</h2>
-        <p class="section-subtitle">Join these ongoing challenges and showcase your talent!</p>
-        
-        <div class="challenges-grid">
-            <div class="challenge-card">
-                <div class="challenge-header">
-                    <div class="challenge-icon">🎨</div>
-                    <h3 class="challenge-title">3-Color Rangoli Challenge</h3>
-                </div>
-                <div class="challenge-content">
-                    <p class="challenge-desc">Create the most creative rangoli using only 3 colors of your choice. Limited space, unlimited creativity! Submit photo by Friday midnight.</p>
-                    <div class="challenge-meta">
-                        <span>💰 Prize: ₹2,000</span>
-                        <span>⏱️ 5 days left</span>
-                    </div>
-                    <div class="ai-tip-box">
-                        <h4>🤖 AI Pro Tip:</h4>
-                        <p class="ai-tip-content">Focus on geometric patterns that create optical illusions with your 3 colors. Use complementary colors for maximum impact!</p>
-                    </div>
-                    <button class="btn btn-primary" style="width: 100%; margin-top: 20px;">Join Challenge</button>
-                </div>
-            </div>
-
-            <div class="challenge-card">
-                <div class="challenge-header">
-                    <div class="challenge-icon">💪</div>
-                    <h3 class="challenge-title">10-Minute Plank Challenge</h3>
-                </div>
-                <div class="challenge-content">
-                    <p class="challenge-desc">Hold a plank position for 10 minutes! Test your core strength and endurance. Video proof required with continuous recording.</p>
-                    <div class="challenge-meta">
-                        <span>💰 Prize: ₹1,500</span>
-                        <span>⏱️ 3 days left</span>
-                    </div>
-                    <div class="ai-tip-box">
-                        <h4>🤖 AI Pro Tip:</h4>
-                        <p class="ai-tip-content">Break the 10 minutes mentally into 2-minute segments. Focus on breathing rhythmically. Keep your core tight and body aligned!</p>
-                    </div>
-                    <button class="btn btn-primary" style="width: 100%; margin-top: 20px;">Join Challenge</button>
-                </div>
-            </div>
-
-            <div class="challenge-card">
-                <div class="challenge-header">
-                    <div class="challenge-icon">🗺️</div>
-                    <h3 class="challenge-title">Community Treasure Hunt</h3>
-                </div>
-                <div class="challenge-content">
-                    <p class="challenge-desc">An exciting treasure hunt across the community! Solve AI-generated clues, find hidden treasures, and race to victory!</p>
-                    <div class="challenge-meta">
-                        <span>💰 Prize: ₹5,000</span>
-                        <span>📅 This Saturday</span>
-                    </div>
-                    <div class="ai-tip-box">
-                        <h4>🤖 AI Pro Tip:</h4>
-                        <p class="ai-tip-content">Clues are generated using pattern recognition. Think logically, look for hidden connections, and don't overlook obvious spots!</p>
-                    </div>
-                    <button class="btn btn-primary" style="width: 100%; margin-top: 20px;">Register (₹50)</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- How AI Powers ZenStars -->
     <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 80px 20px; color: white;">
         <div class="container">
             <h2 class="section-title" style="color: white; -webkit-text-fill-color: white;">🤖 How AI Powers ZenStars</h2>
@@ -815,65 +660,74 @@
                     <h3 style="font-size: 1.4em; margin-bottom: 15px;">Fair Judging</h3>
                     <p style="opacity: 0.95; line-height: 1.7;">AI assists in creating objective judging criteria and providing initial assessments</p>
                 </div>
-
-                <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; border: 2px solid rgba(255,255,255,0.2);">
-                    <div style="font-size: 3em; margin-bottom: 15px;">🎯</div>
-                    <h3 style="font-size: 1.4em; margin-bottom: 15px;">Personalization</h3>
-                    <p style="opacity: 0.95; line-height: 1.7;">Suggests challenges based on your skills, interests, and past performance</p>
-                </div>
-
-                <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; border: 2px solid rgba(255,255,255,0.2);">
-                    <div style="font-size: 3em; margin-bottom: 15px;">🔄</div>
-                    <h3 style="font-size: 1.4em; margin-bottom: 15px;">Variations</h3>
-                    <p style="opacity: 0.95; line-height: 1.7;">Creates endless variations of popular challenges to keep community engaged</p>
-                </div>
-
-                <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 30px; border-radius: 20px; border: 2px solid rgba(255,255,255,0.2);">
-                    <div style="font-size: 3em; margin-bottom: 15px;">🧩</div>
-                    <h3 style="font-size: 1.4em; margin-bottom: 15px;">Clue Generation</h3>
-                    <p style="opacity: 0.95; line-height: 1.7;">For treasure hunts and puzzles, AI generates creative clues and riddles</p>
-                </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
     <div class="footer">
         <p style="font-size: 1.3em; font-weight: 700;">⚡ ZENSTARS ⚡</p>
         <p>Powered by Open-Source AI • Built for Communities</p>
         <p style="margin-top: 30px; opacity: 0.7;">Challenge • Compete • Celebrate 🏆</p>
     </div>
 
-    <!-- Floating ChaiCheers Button -->
     <a href="https://cspdgrit.github.io/chaicheers/" target="_blank" class="floating-btn">☕ ChaiCheers</a>
 
     <script>
-        // Global state
+        // State management
         let currentMode = 'new';
         let currentProvider = 'groq';
+        let lastGeneratedContent = '';
 
-        // Mode selection
-        function selectMode(mode) {
-            currentMode = mode;
-            document.querySelectorAll('.option-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+        // Load saved API key
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedKey = localStorage.getItem('zenstars_api_key');
+            const savedProvider = localStorage.getItem('zenstars_provider');
             
-            // Update result box title based on mode
-            const titles = {
-                'new': 'Generated Challenge',
-                'variation': 'Challenge Variation',
-                'tips': 'AI Tips & Strategy',
-                'judging': 'Judging Criteria'
-            };
-            document.getElementById('resultTitle').textContent = titles[mode];
-        }
+            if (savedKey) {
+                document.getElementById('apiKey').value = savedKey;
+            }
+            
+            if (savedProvider) {
+                currentProvider = savedProvider;
+                document.querySelectorAll('.provider-btn').forEach(btn => {
+                    btn.classList.toggle('active', btn.dataset.provider === savedProvider);
+                });
+            }
+        });
 
         // Provider selection
-        function selectProvider(provider) {
-            currentProvider = provider;
-            document.querySelectorAll('.provider-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-        }
+        document.querySelectorAll('.provider-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentProvider = this.dataset.provider;
+                document.querySelectorAll('.provider-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                localStorage.setItem('zenstars_provider', currentProvider);
+            });
+        });
+
+        // Mode selection
+        document.querySelectorAll('.option-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                currentMode = this.dataset.mode;
+                document.querySelectorAll('.option-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const titles = {
+                    'new': 'Generated Challenge',
+                    'variation': 'Challenge Variation',
+                    'tips': 'AI Tips & Strategy',
+                    'judging': 'Judging Criteria'
+                };
+                document.getElementById('resultTitle').textContent = titles[currentMode];
+            });
+        });
+
+        // Save API key
+        document.getElementById('apiKey').addEventListener('change', function() {
+            if (this.value) {
+                localStorage.setItem('zenstars_api_key', this.value);
+            }
+        });
 
         // Scroll functions
         function scrollToGenerator() {
@@ -884,213 +738,196 @@
             document.getElementById('challenges').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Generate Challenge with AI
-        async function generateChallenge() {
-            const btn = document.getElementById('generateBtn');
-            const resultBox = document.getElementById('resultBox');
-            const resultContent = document.getElementById('resultContent');
-            
-            // Get form values
+        // Build prompt based on mode
+        function buildPrompt() {
             const category = document.getElementById('category').value;
             const difficulty = document.getElementById('difficulty').value;
             const duration = document.getElementById('duration').value;
             const requirements = document.getElementById('requirements').value;
-            const apiKey = document.getElementById('apiKey').value;
 
-            // Show loading
-            btn.disabled = true;
-            btn.innerHTML = '<div class="spinner"></div><span>Generating with AI...</span>';
-            resultBox.classList.remove('visible');
+            const categoryNames = {
+                'art': 'Art & Craft',
+                'fitness': 'Fitness',
+                'cooking': 'Cooking',
+                'home': 'Home & Garden',
+                'performance': 'Performance',
+                'treasure': 'Treasure Hunt'
+            };
 
-            // Build prompt based on mode
-            let prompt = '';
-            
             if (currentMode === 'new') {
-                prompt = `Generate a creative community challenge with these specifications:
-Category: ${category}
+                return `Generate a creative community challenge with these specifications:
+Category: ${categoryNames[category]}
 Difficulty: ${difficulty}
 Duration: ${duration}
 ${requirements ? 'Additional Requirements: ' + requirements : ''}
 
-Please provide:
+Please provide a well-structured challenge with:
 1. Challenge Name (catchy and engaging)
-2. Detailed Description (what participants need to do)
+2. Description (clear explanation of what participants need to do)
 3. Rules (3-5 clear rules)
 4. Judging Criteria (how winners will be selected)
-5. Prize Suggestion
+5. Suggested Prize Amount (in INR)
 6. Submission Guidelines
 
-Make it fun, engaging, and suitable for a community event!`;
+Format the response in an easy-to-read way with clear sections. Make it fun, engaging, and suitable for a community event!`;
             } else if (currentMode === 'variation') {
-                prompt = `Create a variation of a ${category} challenge with ${difficulty} difficulty that takes ${duration}.
+                return `Create a unique variation of a ${categoryNames[category]} challenge with ${difficulty} difficulty that takes ${duration}.
 ${requirements ? 'Additional Requirements: ' + requirements : ''}
 
-Provide a unique twist on a common ${category} challenge that would excite a community. Include the challenge name, description, rules, and what makes this variation special.`;
+Provide a creative twist on a common ${categoryNames[category]} challenge. Include:
+1. Challenge name with the unique twist
+2. What makes this variation special
+3. How to participate
+4. Rules
+5. Tips for success
+
+Make it exciting and different from typical challenges!`;
             } else if (currentMode === 'tips') {
-                prompt = `Provide expert tips and strategies for a ${category} challenge at ${difficulty} level.
+                return `Provide expert tips and strategies for a ${categoryNames[category]} challenge at ${difficulty} level that takes ${duration}.
 ${requirements ? 'Context: ' + requirements : ''}
 
 Include:
-1. Preparation tips
-2. Execution strategies
-3. Common mistakes to avoid
-4. Pro techniques
-5. How to stand out from others`;
+1. Preparation Tips (what to do before starting)
+2. Execution Strategies (how to perform well)
+3. Common Mistakes to Avoid
+4. Pro Techniques
+5. How to Stand Out from Others
+
+Give practical, actionable advice that will help participants succeed!`;
             } else if (currentMode === 'judging') {
-                prompt = `Create comprehensive judging criteria for a ${category} community challenge at ${difficulty} level.
+                return `Create comprehensive and fair judging criteria for a ${categoryNames[category]} community challenge at ${difficulty} level.
 
 Provide:
-1. Scoring categories (with point values)
-2. What judges should look for
+1. Scoring Categories with point values (total 100 points)
+2. What judges should look for in each category
 3. Tiebreaker criteria
 4. Fairness guidelines
-5. Evaluation rubric
+5. Clear evaluation rubric
 
-Make it objective and transparent.`;
+Make it objective, transparent, and easy for judges to follow!`;
+            }
+        }
+
+        // API call functions
+        async function callGroqAPI(prompt, apiKey) {
+            const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: 'llama-3.1-70b-versatile',
+                    messages: [{ role: 'user', content: prompt }],
+                    temperature: 0.7,
+                    max_tokens: 2000
+                })
+            });
+
+            if (!response.ok) {
+                const error = await response.json();
+                throw new Error(error.error?.message || 'API call failed');
             }
 
-            try {
-                // Simulate AI call with demo response
-                // In production, this would call actual API
-                await new Promise(resolve => setTimeout(resolve, 2000));
-                
-                // Demo response
-                const demoResponses = {
-                    'new': `🎨 **3-Material Mandala Challenge**
+            const data = await response.json();
+            return data.choices[0].message.content;
+        }
 
-📝 **Description:**
-Create a stunning mandala artwork using exactly 3 different materials from your home. Get creative with rice, lentils, buttons, leaves, colored paper, or anything else! The challenge is to make something beautiful with limited resources.
+        async function callHuggingFaceAPI(prompt, apiKey) {
+            const response = await fetch('https://api-inference.huggingface.co/models/mistralai/Mistral-7B-Instruct-v0.2', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    inputs: prompt,
+                    parameters: {
+                        max_new_tokens: 2000,
+                        temperature: 0.7,
+                        return_full_text: false
+                    }
+                })
+            });
 
-📋 **Rules:**
-1. Use only 3 materials - no more, no less
-2. Minimum size: 1 foot diameter
-3. Must be created within the time limit
-4. Submit clear photo from top view
-5. Include a list of materials used
+            if (!response.ok) {
+                throw new Error('HuggingFace API call failed');
+            }
 
-⚖️ **Judging Criteria:**
-- Creativity & Originality (40 points)
-- Symmetry & Design (30 points)
-- Material Combination (20 points)
-- Overall Impact (10 points)
+            const data = await response.json();
+            return data[0].generated_text;
+        }
 
-🏆 **Prize:** ₹1,500 + Featured on community board
+        async function callTogetherAPI(prompt, apiKey) {
+            const response = await fetch('https://api.together.xyz/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    model: 'meta-llama/Llama-3-70b-chat-hf',
+                    messages: [{ role: 'user', content: prompt }],
+                    temperature: 0.7,
+                    max_tokens: 2000
+                })
+            });
 
-📸 **Submission:** Photo + video of creation process (optional but recommended for bonus points)`,
-                    
-                    'variation': `🎨 **Blindfolded Art Challenge - "Art in the Dark"**
+            if (!response.ok) {
+                throw new Error('Together AI API call failed');
+            }
 
-🌟 **The Twist:**
-Create a rangoli or artwork while blindfolded (or with eyes closed)! This variation tests your muscle memory and creativity without visual feedback.
+            const data = await response.json();
+            return data.choices[0].message.content;
+        }
 
-📝 **Description:**
-After studying your design for 2 minutes, you'll be blindfolded and must recreate it from memory. This unique twist on traditional art challenges focuses on spatial awareness and memory.
+        // Main generate function
+        async function generateChallenge() {
+            const btn = document.getElementById('generateBtn');
+            const resultBox = document.getElementById('resultBox');
+            const resultContent = document.getElementById('resultContent');
+            const apiKey = document.getElementById('apiKey').value;
 
-🎯 **What Makes It Special:**
-- Tests memorization skills along with creativity
-- Creates hilarious and unexpected results
-- Levels the playing field - even beginners can surprise themselves!
-- Great for social media content
-
-⏱️ Time: 30 minutes (2 min study + 28 min execution)`,
-                    
-                    'tips': `💡 **Expert Tips for ${category.toUpperCase()} Challenges**
-
-🎯 **Preparation Tips:**
-1. Research past winning entries in this category
-2. Practice your technique at least twice before submission
-3. Gather all materials in advance
-4. Set up good lighting for photos/videos
-5. Have a backup plan ready
-
-⚡ **Execution Strategies:**
-1. Start with basic structure, then add details
-2. Focus on one section at a time
-3. Take progress photos throughout
-4. Don't rush - quality over speed
-5. Review before final submission
-
-❌ **Common Mistakes to Avoid:**
-1. Starting without a clear plan
-2. Using low-quality photos for submission
-3. Ignoring the time limit
-4. Not reading rules carefully
-5. Overcomplicating simple tasks
-
-🏆 **Pro Techniques:**
-1. Study what judges value most
-2. Add unique personal touches
-3. Document your process well
-4. Engage with the community
-5. Learn from feedback on past attempts
-
-✨ **Stand Out from Others:**
-- Add an unexpected twist to your approach
-- Show personality in your submission
-- Use storytelling in your presentation
-- Demonstrate clean execution
-- Show the "why" behind your choices`,
-                    
-                    'judging': `⚖️ **Judging Criteria for ${category.toUpperCase()} Challenge**
-
-📊 **Scoring Categories (Total: 100 points)**
-
-1. **Technical Skill (30 points)**
-   - Precision and accuracy: 10 pts
-   - Clean execution: 10 pts
-   - Difficulty level attempted: 10 pts
-
-2. **Creativity & Originality (25 points)**
-   - Unique approach: 15 pts
-   - Innovation: 10 pts
-
-3. **Overall Impact (20 points)**
-   - Visual appeal: 10 pts
-   - Wow factor: 10 pts
-
-4. **Adherence to Rules (15 points)**
-   - Following specifications: 10 pts
-   - Proper submission format: 5 pts
-
-5. **Presentation (10 points)**
-   - Photo/video quality: 5 pts
-   - Clear documentation: 5 pts
-
-🔍 **What Judges Look For:**
-- Attention to detail
-- Evidence of effort and preparation
-- Clear understanding of the challenge
-- Personal style and flair
-- Professional presentation
-
-🤝 **Tiebreaker Criteria:**
-1. Community votes (if enabled)
-2. Process documentation quality
-3. Creativity score
-4. Submission timestamp (earlier = advantage)
-
-✅ **Fairness Guidelines:**
-- Blind judging (names hidden)
-- Multiple judges with averaged scores
-- Clear rubric shared publicly
-- Opportunity for appeals
-- Transparent scoring process`
-                };
-
-                resultContent.textContent = demoResponses[currentMode];
+            if (!apiKey) {
+                resultContent.innerHTML = '<div class="error-note">⚠️ <strong>API Key Required:</strong> Please add your API key above to generate challenges. Get free API keys from the links provided in the settings.</div>';
                 resultBox.classList.add('visible');
+                return;
+            }
 
-                // Show note about actual API integration
-                if (!apiKey) {
-                    const note = document.createElement('div');
-                    note.className = 'api-note';
-                    note.style.marginTop = '20px';
-                    note.innerHTML = '💡 <strong>Demo Mode:</strong> This is a sample response. Add your API key above to use real AI generation with ' + currentProvider + '.';
-                    resultBox.appendChild(note);
+            btn.disabled = true;
+            btn.innerHTML = '<div class="spinner"></div><span>Generating with AI...</span>';
+            resultBox.classList.remove('visible');
+
+            try {
+                const prompt = buildPrompt();
+                let aiResponse;
+
+                if (currentProvider === 'groq') {
+                    aiResponse = await callGroqAPI(prompt, apiKey);
+                } else if (currentProvider === 'huggingface') {
+                    aiResponse = await callHuggingFaceAPI(prompt, apiKey);
+                } else if (currentProvider === 'together') {
+                    aiResponse = await callTogetherAPI(prompt, apiKey);
                 }
 
+                lastGeneratedContent = aiResponse;
+                resultContent.textContent = aiResponse;
+                resultBox.classList.add('visible');
+
+                // Add success message
+                const successNote = document.createElement('div');
+                successNote.className = 'success-note';
+                successNote.style.marginTop = '20px';
+                successNote.innerHTML = `✅ <strong>Generated Successfully!</strong> Using ${currentProvider.toUpperCase()} API.`;
+                resultContent.insertAdjacentElement('afterend', successNote);
+
             } catch (error) {
-                resultContent.textContent = '❌ Error generating challenge. Please check your API key and try again.\n\nError: ' + error.message;
+                resultContent.innerHTML = `<div class="error-note">❌ <strong>Error:</strong> ${error.message}<br><br>
+                <strong>Troubleshooting:</strong><br>
+                • Check if your API key is valid<br>
+                • Make sure you have credits/quota remaining<br>
+                • Try a different provider<br>
+                • Check your internet connection</div>`;
                 resultBox.classList.add('visible');
             } finally {
                 btn.disabled = false;
@@ -1098,61 +935,57 @@ After studying your design for 2 minutes, you'll be blindfolded and must recreat
             }
         }
 
+        // Regenerate with same settings
+        function regenerate() {
+            generateChallenge();
+        }
+
         // Save challenge
         function saveChallenge() {
-            const content = document.getElementById('resultContent').textContent;
-            const blob = new Blob([content], { type: 'text/plain' });
+            if (!lastGeneratedContent) return;
+            
+            const blob = new Blob([lastGeneratedContent], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
             const a = document.createElement('a');
             a.href = url;
-            a.download = 'zenstars-challenge-' + Date.now() + '.txt';
+            a.download = `zenstars-challenge-${Date.now()}.txt`;
             a.click();
             URL.revokeObjectURL(url);
             
-            alert('✅ Challenge saved! You can now share it with your community.');
+            alert('✅ Challenge saved successfully!');
         }
 
-        // Real API Integration Guide (for developers)
-        /*
-        To integrate real APIs:
+        // Share challenge
+        function shareChallenge() {
+            if (!lastGeneratedContent) return;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'ZenStars Challenge',
+                    text: lastGeneratedContent
+                }).catch(() => {
+                    copyToClipboard();
+                });
+            } else {
+                copyToClipboard();
+            }
+        }
 
-        1. GROQ (Fast & Recommended):
-           - Sign up at: https://console.groq.com
-           - Get API key
-           - Endpoint: https://api.groq.com/openai/v1/chat/completions
-           - Model: llama-3.1-70b-versatile or mixtral-8x7b-32768
+        function copyToClipboard() {
+            navigator.clipboard.writeText(lastGeneratedContent).then(() => {
+                alert('📋 Challenge copied to clipboard!');
+            });
+        }
 
-        2. HuggingFace:
-           - Sign up at: https://huggingface.co
-           - Get API token
-           - Use Inference API or Serverless Inference
-           - Models: mistralai/Mistral-7B-Instruct-v0.2
+        // Generate button click handler
+        document.getElementById('generateBtn').addEventListener('click', generateChallenge);
 
-        3. Together AI:
-           - Sign up at: https://api.together.xyz
-           - Get API key
-           - Endpoint: https://api.together.xyz/inference
-           - Models: togethercomputer/llama-2-70b-chat
-
-        Example fetch call:
-        
-        const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${apiKey}`,
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                model: 'llama-3.1-70b-versatile',
-                messages: [{ role: 'user', content: prompt }],
-                temperature: 0.7,
-                max_tokens: 1000
-            })
+        // Allow Enter key in textarea to trigger generation
+        document.getElementById('requirements').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && e.ctrlKey) {
+                generateChallenge();
+            }
         });
-        
-        const data = await response.json();
-        const aiResponse = data.choices[0].message.content;
-        */
     </script>
 </body>
 </html>
