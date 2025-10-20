@@ -171,283 +171,221 @@
             margin-bottom: 50px;
         }
 
-        .how-it-works {
-            background: linear-gradient(135deg, #fff5e6 0%, #ffe6f0 100%);
-        }
-
-        .timeline {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .timeline-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
+        .current-challenge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 20px;
             text-align: center;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            transition: all 0.4s;
-            position: relative;
-            overflow: hidden;
         }
 
-        .timeline-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #f5576c, #4facfe);
+        .challenge-box {
+            max-width: 800px;
+            margin: 30px auto;
+            background: white;
+            color: #333;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
 
-        .timeline-card:hover {
-            transform: translateY(-10px) rotate(2deg);
-            box-shadow: 0 20px 50px rgba(245, 87, 108, 0.3);
-        }
-
-        .timeline-card .day {
+        .challenge-box h3 {
             font-size: 2.5em;
-            font-weight: 800;
-            background: linear-gradient(135deg, #f5576c, #4facfe);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
+            color: #f5576c;
+            margin-bottom: 20px;
         }
 
-        .timeline-card .icon {
-            font-size: 4em;
+        .challenge-box .emoji {
+            font-size: 5em;
             margin: 20px 0;
         }
 
-        .timeline-card h3 {
-            color: #333;
-            margin-bottom: 10px;
-            font-size: 1.3em;
-        }
-
-        .timeline-card p {
-            color: #666;
+        .challenge-box p {
+            font-size: 1.2em;
             line-height: 1.8;
-        }
-
-        .challenges-section {
-            background: linear-gradient(135deg, #e0f7ff 0%, #f0e6ff 100%);
-        }
-
-        .challenge-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .challenge-card {
-            background: white;
-            border-radius: 20px;
-            overflow: hidden;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
-            transition: all 0.4s;
-            cursor: pointer;
-        }
-
-        .challenge-card:hover {
-            transform: scale(1.05) rotate(-2deg);
-            box-shadow: 0 20px 50px rgba(79, 172, 254, 0.3);
-        }
-
-        .challenge-header {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            color: white;
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .challenge-header .emoji {
-            font-size: 4em;
             margin-bottom: 15px;
         }
 
-        .challenge-header h3 {
+        .timer {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
             font-size: 1.5em;
             font-weight: 700;
-        }
-
-        .challenge-body {
-            padding: 30px;
-        }
-
-        .challenge-body p {
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 15px;
-        }
-
-        .challenge-body .prize {
-            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-            font-weight: 700;
             color: #d63031;
-            margin-top: 20px;
-            font-size: 1.2em;
         }
 
-        .revenue-section {
-            background: linear-gradient(135deg, #2d3436 0%, #000000 100%);
-            color: white;
-            padding: 100px 20px;
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            overflow-y: auto;
         }
 
-        .revenue-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .revenue-card {
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(10px);
-            padding: 40px 30px;
+        .modal-content {
+            background: white;
+            margin: 50px auto;
+            padding: 40px;
             border-radius: 20px;
-            text-align: center;
-            border: 2px solid rgba(255,255,255,0.2);
-            transition: all 0.4s;
+            max-width: 600px;
+            position: relative;
+            animation: slideDown 0.4s ease-out;
         }
 
-        .revenue-card:hover {
-            background: rgba(255,255,255,0.15);
-            transform: translateY(-10px);
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            font-size: 2em;
+            cursor: pointer;
+            color: #999;
+        }
+
+        .close:hover {
+            color: #f5576c;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
             border-color: #4facfe;
         }
 
-        .revenue-card .icon {
-            font-size: 4em;
-            margin-bottom: 20px;
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
         }
 
-        .revenue-card h3 {
-            font-size: 1.5em;
-            margin-bottom: 15px;
-            color: #4facfe;
+        .qr-section {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            color: white;
+            margin: 30px 0;
         }
 
-        .revenue-card .amount {
-            font-size: 2.5em;
-            font-weight: 800;
-            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .qr-code {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
             margin: 20px 0;
         }
 
-        .benefits-section {
-            padding: 100px 20px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        .upi-id {
+            font-size: 1.3em;
+            font-weight: 700;
+            background: rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 10px;
+            margin: 15px 0;
+            word-break: break-all;
         }
 
-        .benefits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-top: 50px;
-        }
-
-        .benefit-card {
-            text-align: center;
-            padding: 40px 20px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-            transition: all 0.4s;
-        }
-
-        .benefit-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 50px rgba(245, 87, 108, 0.2);
-        }
-
-        .benefit-card .icon {
-            font-size: 4em;
-            margin-bottom: 20px;
-        }
-
-        .benefit-card h3 {
-            color: #f5576c;
-            font-size: 1.4em;
-            margin-bottom: 15px;
-        }
-
-        .benefit-card p {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-section::before {
-            content: '🌟⭐✨💫🏆';
-            position: absolute;
-            font-size: 100px;
-            opacity: 0.1;
-            top: 20%;
-            left: 10%;
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .cta-section h2 {
-            font-size: 3.5em;
-            margin-bottom: 20px;
-            font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .cta-section .highlight {
-            font-size: 1.5em;
-            margin: 30px 0;
-            font-weight: 600;
-        }
-
-        .stats-banner {
+        .payment-apps {
             display: flex;
             justify-content: center;
-            gap: 50px;
+            gap: 15px;
+            margin-top: 20px;
             flex-wrap: wrap;
-            margin: 50px 0;
         }
 
-        .stat-item {
+        .payment-app {
+            background: white;
+            color: #333;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9em;
+        }
+
+        .leaderboard {
+            background: #f8f9fa;
+            padding: 80px 20px;
+        }
+
+        .leaderboard-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .leaderboard-item {
+            background: white;
+            padding: 25px;
+            margin: 15px 0;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+        }
+
+        .leaderboard-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 30px rgba(79, 172, 254, 0.2);
+        }
+
+        .rank {
+            font-size: 2em;
+            font-weight: 800;
+            color: #f5576c;
+            min-width: 60px;
             text-align: center;
         }
 
-        .stat-item .number {
-            font-size: 4em;
-            font-weight: 800;
-            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        .rank.gold { color: #ffd700; }
+        .rank.silver { color: #c0c0c0; }
+        .rank.bronze { color: #cd7f32; }
+
+        .participant-info {
+            flex: 1;
         }
 
-        .stat-item .label {
-            font-size: 1.2em;
-            opacity: 0.9;
-            margin-top: 10px;
+        .participant-name {
+            font-size: 1.3em;
+            font-weight: 700;
+            color: #333;
+        }
+
+        .participant-details {
+            color: #666;
+            margin-top: 5px;
         }
 
         .footer {
@@ -479,6 +417,72 @@
             50% { transform: translateY(-15px); }
         }
 
+        .success-message {
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+            font-weight: 600;
+            display: none;
+        }
+
+        .whatsapp-section {
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            padding: 60px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .whatsapp-btn {
+            background: white;
+            color: #25D366;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 20px;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f5576c, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 10px;
+            font-size: 1.1em;
+        }
+
         @media (max-width: 768px) {
             .hero h1 {
                 font-size: 2.8em;
@@ -506,6 +510,16 @@
                 bottom: 20px;
                 right: 20px;
             }
+
+            .modal-content {
+                margin: 20px;
+                padding: 30px 20px;
+            }
+
+            .leaderboard-item {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -517,251 +531,204 @@
         <p class="description">Join the adventure! Every week, a new challenge. Every challenge, a new story. Entry ₹20, Glory priceless! 🏆</p>
         
         <div class="button-group">
-            <button class="btn btn-primary">🚀 Join The Challenge</button>
+            <button class="btn btn-primary" onclick="openRegistration()">🚀 Join This Week's Challenge</button>
             <a href="https://cspdgrit.github.io/chaicheers/" target="_blank" class="btn btn-chaicheers">☕ ChaiCheers Hub</a>
         </div>
     </div>
 
     <div class="mountain-divider"></div>
 
-    <div class="how-it-works">
+    <!-- Current Challenge Section -->
+    <div class="current-challenge">
         <div class="container">
-            <h2 class="section-title">⛰️ Your Weekly Adventure Journey</h2>
-            <p class="section-subtitle">Four simple steps to glory and community bonding!</p>
-            
-            <div class="timeline">
-                <div class="timeline-card">
-                    <div class="day">Monday</div>
-                    <div class="icon">📢</div>
-                    <h3>Challenge Announced</h3>
-                    <p>The week's adventure is revealed! Fitness? Creativity? Speed? Get ready to compete!</p>
+            <h2 style="font-size: 3em; margin-bottom: 30px;">🎯 This Week's Challenge</h2>
+            <div class="challenge-box">
+                <div class="emoji">🎨</div>
+                <h3 id="currentChallengeTitle">Rangoli Mastery Challenge</h3>
+                <p id="currentChallengeDesc">Create the most creative rangoli using only 3 colors of your choice. Limited space, unlimited creativity! Post your photo by Friday midnight.</p>
+                <div class="timer" id="challengeTimer">
+                    ⏰ Time Remaining: 3 days 14 hours
                 </div>
-
-                <div class="timeline-card">
-                    <div class="day">Tue-Fri</div>
-                    <div class="icon">💪</div>
-                    <h3>Take Action</h3>
-                    <p>Complete your challenge, record your proof, and submit before Friday midnight!</p>
-                </div>
-
-                <div class="timeline-card">
-                    <div class="day">Saturday</div>
-                    <div class="icon">🗳️</div>
-                    <h3>Voting Begins</h3>
-                    <p>Community votes or judges evaluate. May the best challenger win!</p>
-                </div>
-
-                <div class="timeline-card">
-                    <div class="day">Sunday</div>
-                    <div class="icon">🏆</div>
-                    <h3>Winners Crowned</h3>
-                    <p>Results announced! Winners celebrated! Next challenge teased! Repeat the adventure!</p>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 60px;">
-                <a href="https://cspdgrit.github.io/chaicheers/" target="_blank" class="btn btn-chaicheers">☕ Celebrate With ChaiCheers</a>
+                <p style="font-size: 1.4em; color: #f5576c; font-weight: 700;">🏆 Prize: ₹500 + Recognition</p>
+                <button class="btn btn-primary" onclick="openRegistration()" style="margin-top: 30px;">Enter Challenge - Pay ₹20</button>
             </div>
         </div>
     </div>
 
-    <div class="challenges-section">
+    <!-- Stats Section -->
+    <div class="container">
+        <h2 class="section-title">📊 Live Stats</h2>
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalParticipants">0</div>
+                <div class="stat-label">Participants This Week</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">₹500</div>
+                <div class="stat-label">Current Prize Pool</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="challengeNumber">1</div>
+                <div class="stat-label">Challenge Number</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">52</div>
+                <div class="stat-label">Challenges Per Year</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Leaderboard Section -->
+    <div class="leaderboard">
         <div class="container">
-            <h2 class="section-title">🎯 Epic Challenge Examples</h2>
-            <p class="section-subtitle">From creative to fitness, every week brings new adventures!</p>
-            
-            <div class="challenge-grid">
-                <div class="challenge-card">
-                    <div class="challenge-header">
-                        <div class="emoji">🎨</div>
-                        <h3>Rangoli Mastery</h3>
-                    </div>
-                    <div class="challenge-body">
-                        <p>Create the most creative rangoli using only 3 colors. Limited space, unlimited creativity!</p>
-                        <div class="prize">🏆 Winner: ₹500</div>
+            <h2 class="section-title">🏆 Last Week's Winners</h2>
+            <p class="section-subtitle">Celebrating our community champions!</p>
+            <div class="leaderboard-list" id="leaderboardList">
+                <div class="leaderboard-item">
+                    <div class="rank gold">🥇</div>
+                    <div class="participant-info">
+                        <div class="participant-name">Priya Sharma</div>
+                        <div class="participant-details">10-Minute Plank Champion | Flat 204, Block A</div>
                     </div>
                 </div>
-
-                <div class="challenge-card">
-                    <div class="challenge-header">
-                        <div class="emoji">⏱️</div>
-                        <h3>Plank Champion</h3>
-                    </div>
-                    <div class="challenge-body">
-                        <p>10-minute plank challenge! Test your endurance and mental strength. Can you hold it?</p>
-                        <div class="prize">🏆 Winner: ₹500</div>
+                <div class="leaderboard-item">
+                    <div class="rank silver">🥈</div>
+                    <div class="participant-info">
+                        <div class="participant-name">Rajesh Kumar</div>
+                        <div class="participant-details">Runner Up | Flat 305, Block B</div>
                     </div>
                 </div>
-
-                <div class="challenge-card">
-                    <div class="challenge-header">
-                        <div class="emoji">🌱</div>
-                        <h3>Garden Glory</h3>
-                    </div>
-                    <div class="challenge-body">
-                        <p>Best balcony garden transformation photo. Show us your green thumb magic!</p>
-                        <div class="prize">🏆 Winner: ₹500</div>
-                    </div>
-                </div>
-
-                <div class="challenge-card">
-                    <div class="challenge-header">
-                        <div class="emoji">🥤</div>
-                        <h3>Recipe Race</h3>
-                    </div>
-                    <div class="challenge-body">
-                        <p>Fastest aam panna recipe video. Speed meets flavor in this culinary adventure!</p>
-                        <div class="prize">🏆 Winner: ₹500</div>
-                    </div>
-                </div>
-
-                <div class="challenge-card">
-                    <div class="challenge-header">
-                        <div class="emoji">👗</div>
-                        <h3>Closet Quest</h3>
-                    </div>
-                    <div class="challenge-body">
-                        <p>Most organized closet transformation. From chaos to zen in one weekend!</p>
-                        <div class="prize">🏆 Winner: ₹500</div>
-                    </div>
-                </div>
-
-                <div class="challenge-card">
-                    <div class="challenge-header">
-                        <div class="emoji">🎭</div>
-                        <h3>Story Time</h3>
-                    </div>
-                    <div class="challenge-body">
-                        <p>Best 2-minute children's story (video or audio). Entertain, educate, inspire!</p>
-                        <div class="prize">🏆 Winner: ₹500</div>
+                <div class="leaderboard-item">
+                    <div class="rank bronze">🥉</div>
+                    <div class="participant-info">
+                        <div class="participant-name">Anita Desai</div>
+                        <div class="participant-details">Third Place | Flat 102, Block C</div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="revenue-section">
-        <div class="container">
-            <h2 class="section-title" style="-webkit-text-fill-color: white;">💰 The Numbers Game</h2>
-            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Simple math, powerful results</p>
+    <!-- WhatsApp Community Section -->
+    <div class="whatsapp-section">
+        <h2 style="font-size: 2.5em; margin-bottom: 20px;">📱 Join Our WhatsApp Community</h2>
+        <p style="font-size: 1.3em; max-width: 800px; margin: 0 auto;">Get instant updates on new challenges, winners, and exclusive community events!</p>
+        <a href="https://wa.me/918341346818?text=Hi!%20I%20want%20to%20join%20ZenStars%20Weekly%20Challenges!" class="whatsapp-btn" target="_blank">
+            💬 Join WhatsApp Group
+        </a>
+        <div style="margin-top: 30px;">
+            <a href="https://cspdgrit.github.io/chaicheers/" target="_blank" class="btn btn-chaicheers">☕ Celebrate at ChaiCheers</a>
+        </div>
+    </div>
+
+    <!-- Registration Modal -->
+    <div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeRegistration()">&times;</span>
+            <h2 style="color: #f5576c; margin-bottom: 30px; text-align: center;">🚀 Join This Week's Challenge</h2>
             
-            <div class="revenue-grid">
-                <div class="revenue-card">
-                    <div class="icon">💵</div>
-                    <h3>Entry Fee</h3>
-                    <div class="amount">₹20</div>
-                    <p>Low barrier, high participation. Everyone can play!</p>
+            <form id="registrationForm" onsubmit="handleRegistration(event)">
+                <div class="form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="participantName" required placeholder="Enter your full name">
                 </div>
 
-                <div class="revenue-card">
-                    <div class="icon">👥</div>
-                    <h3>Weekly Players</h3>
-                    <div class="amount">50</div>
-                    <p>Average participants per challenge in a 200-family society</p>
+                <div class="form-group">
+                    <label>WhatsApp Number *</label>
+                    <input type="tel" id="participantPhone" required placeholder="10-digit mobile number" pattern="[0-9]{10}">
                 </div>
 
-                <div class="revenue-card">
-                    <div class="icon">🎁</div>
-                    <h3>Prize Pool</h3>
-                    <div class="amount">₹500</div>
-                    <p>Winner takes 50%, runners-up get recognition + sponsored prizes</p>
+                <div class="form-group">
+                    <label>Flat/House Number *</label>
+                    <input type="text" id="participantFlat" required placeholder="e.g., Flat 204, Block A">
                 </div>
 
-                <div class="revenue-card">
-                    <div class="icon">📈</div>
-                    <h3>Your Profit</h3>
-                    <div class="amount">₹500</div>
-                    <p>Per week × 4 weeks = ₹2,000/month per society!</p>
+                <div class="form-group">
+                    <label>Email (Optional)</label>
+                    <input type="email" id="participantEmail" placeholder="your.email@example.com">
                 </div>
-            </div>
 
-            <div style="text-align: center; margin-top: 60px;">
-                <div class="highlight">☕ Scale to 5 societies = ₹10,000/month! ChaiCheers to that! 🎉</div>
-                <a href="https://cspdgrit.github.io/chaicheers/" target="_blank" class="btn btn-chaicheers" style="margin-top: 30px;">Celebrate Success at ChaiCheers</a>
+                <!-- Payment Section -->
+                <div class="qr-section">
+                    <h3 style="margin-bottom: 20px;">💳 Pay Entry Fee: ₹20</h3>
+                    <div class="qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=upi://pay?pa=8341346818@ybl%26pn=ZenStars%26am=20%26cu=INR%26tn=ZenStars%20Challenge%20Entry" alt="UPI QR Code" style="width: 200px; height: 200px;">
+                    </div>
+                    <div class="upi-id">UPI ID: 8341346818@ybl</div>
+                    <p style="margin: 15px 0;">Scan QR code or use UPI ID to pay ₹20</p>
+                    <div class="payment-apps">
+                        <span class="payment-app">📱 Google Pay</span>
+                        <span class="payment-app">💜 PhonePe</span>
+                        <span class="payment-app">💙 Paytm</span>
+                        <span class="payment-app">🏦 Any UPI App</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Transaction ID / UPI Reference Number *</label>
+                    <input type="text" id="transactionId" required placeholder="Enter 12-digit transaction ID">
+                </div>
+
+                <div class="form-group">
+                    <label>Screenshot of Payment (Optional)</label>
+                    <input type="file" id="paymentProof" accept="image/*">
+                    <small style="color: #666;">Upload payment screenshot for faster verification</small>
+                </div>
+
+                <div class="success-message" id="successMessage">
+                    ✅ Registration Successful! Check WhatsApp for confirmation.
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                    ✨ Complete Registration
+                </button>
+            </form>
+
+            <div style="margin-top: 30px; text-align: center; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+                <p style="color: #666; margin-bottom: 10px;"><strong>Need Help?</strong></p>
+                <a href="https://wa.me/918341346818?text=Hi!%20I%20need%20help%20with%20registration" target="_blank" style="color: #25D366; font-weight: 600; text-decoration: none;">
+                    💬 Contact on WhatsApp: 8341346818
+                </a>
             </div>
         </div>
     </div>
 
-    <div class="benefits-section">
-        <div class="container">
-            <h2 class="section-title">✨ Why ZenStars Wins</h2>
-            <p class="section-subtitle">The perfect blend of fun, profit, and community building</p>
+    <!-- Submit Entry Modal -->
+    <div id="submissionModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeSubmission()">&times;</span>
+            <h2 style="color: #f5576c; margin-bottom: 30px; text-align: center;">📤 Submit Your Entry</h2>
             
-            <div class="benefits-grid">
-                <div class="benefit-card">
-                    <div class="icon">🎯</div>
-                    <h3>Zero Inventory</h3>
-                    <p>Just coordination! No products, no storage, no overhead. Pure service business.</p>
+            <form id="submissionForm" onsubmit="handleSubmission(event)">
+                <div class="form-group">
+                    <label>Your Name *</label>
+                    <input type="text" id="submitterName" required placeholder="Enter your name">
                 </div>
 
-                <div class="benefit-card">
-                    <div class="icon">📱</div>
-                    <h3>Viral Potential</h3>
-                    <p>User-generated content spreads naturally. Every challenge is social media gold!</p>
+                <div class="form-group">
+                    <label>Registration Number *</label>
+                    <input type="text" id="registrationNumber" required placeholder="Check your WhatsApp for registration number">
                 </div>
 
-                <div class="benefit-card">
-                    <div class="icon">🔄</div>
-                    <h3>Weekly Revenue</h3>
-                    <p>Recurring income model. Build habit, build loyalty, build profits!</p>
+                <div class="form-group">
+                    <label>Upload Your Entry (Photo/Video) *</label>
+                    <input type="file" id="entryFile" accept="image/*,video/*" required>
+                    <small style="color: #666;">Max size: 10MB | Formats: JPG, PNG, MP4</small>
                 </div>
 
-                <div class="benefit-card">
-                    <div class="icon">🏘️</div>
-                    <h3>Scales Fast</h3>
-                    <p>Works in ANY community size. From 50 families to 500, the model adapts!</p>
+                <div class="form-group">
+                    <label>Description (Optional)</label>
+                    <textarea id="entryDescription" placeholder="Tell us about your entry..."></textarea>
                 </div>
 
-                <div class="benefit-card">
-                    <div class="icon">🎪</div>
-                    <h3>Sponsor Magnet</h3>
-                    <p>Local gyms, cafes, brands love sponsoring. Extra prizes = zero cost to you!</p>
+                <div class="success-message" id="submissionSuccess">
+                    ✅ Entry Submitted! Good luck, champion! 🏆
                 </div>
 
-                <div class="benefit-card">
-                    <div class="icon">⏰</div>
-                    <h3>Low Time</h3>
-                    <p>2-3 hours per week. Perfect side hustle or passive income stream!</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="cta-section">
-        <h2>🚀 Ready to Start Your Adventure?</h2>
-        <p class="highlight">☕ Launch ZenStars in your community this Monday! ChaiCheers to bold beginnings! 🎊</p>
-        
-        <div class="stats-banner">
-            <div class="stat-item">
-                <div class="number">7</div>
-                <div class="label">Days to Launch</div>
-            </div>
-            <div class="stat-item">
-                <div class="number">₹20</div>
-                <div class="label">Entry Fee</div>
-            </div>
-            <div class="stat-item">
-                <div class="number">52</div>
-                <div class="label">Challenges/Year</div>
-            </div>
-        </div>
-
-        <div class="button-group">
-            <button class="btn btn-primary">🎯 Launch ZenStars Now</button>
-            <button class="btn btn-primary" style="background: transparent; border: 3px solid white; color: white;">📥 Download Launch Kit</button>
-            <a href="https://cspdgrit.github.io/chaicheers/" target="_blank" class="btn btn-chaicheers">☕ Join ChaiCheers Community</a>
-        </div>
-
-        <div style="max-width: 900px; margin: 60px auto; padding: 40px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 20px; text-align: left;">
-            <h3 style="font-size: 2em; margin-bottom: 25px; text-align: center;">🗓️ 30-Day Launch Roadmap</h3>
-            <div style="line-height: 2.2; font-size: 1.15em;">
-                <strong>Week 1:</strong> Launch in your society WhatsApp group → Build excitement<br>
-                <strong>Week 2:</strong> Run first FREE challenge (fitness/photo) → Test engagement<br>
-                <strong>Week 3:</strong> Start charging ₹20 → Give winner ₹500 cash<br>
-                <strong>Week 4:</strong> Get local brand to sponsor → ₹1000 prize pool<br>
-                <strong>Month 2:</strong> Expand to 3-5 nearby societies<br>
-                <strong>Month 3:</strong> Create Instagram page → Go city-wide! 🚀
-            </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                    🚀 Submit Entry
+                </button>
+            </form>
         </div>
     </div>
 
@@ -772,6 +739,7 @@
             <a href="https://cspdgrit.github.io/chaicheers/" target="_blank" class="btn btn-chaicheers">☕ Visit ChaiCheers</a>
         </div>
         <p>Every Challenge • Every Week • Every Victory</p>
+        <p style="margin-top: 20px;">Contact: 8341346818 | UPI: 8341346818@ybl</p>
         <p style="margin-top: 30px; opacity: 0.6;">☕ ChaiCheers to celebrating together! 🎉</p>
     </div>
 
@@ -779,19 +747,152 @@
     <a href="https://cspdgrit.github.io/chaicheers/" target="_blank" class="btn btn-chaicheers floating-chai">☕ ChaiCheers</a>
 
     <script>
-        // Button click animations
-        document.querySelectorAll('button, .btn').forEach(button => {
-            button.addEventListener('click', function(e) {
-                if(!this.href) {
-                    this.style.transform = 'scale(0.95)';
-                    setTimeout(() => {
-                        this.style.transform = '';
-                    }, 150);
-                }
-            });
-        });
+        // Registration count
+        let participants = [];
+        
+        // Load participants from memory
+        function loadParticipants() {
+            const stored = JSON.parse(localStorage.getItem('zenstarsParticipants') || '[]');
+            participants = stored;
+            updateStats();
+        }
 
-        // Scroll animations
+        // Save participants to memory
+        function saveParticipants() {
+            localStorage.setItem('zenstarsParticipants', JSON.stringify(participants));
+            updateStats();
+        }
+
+        // Update stats display
+        function updateStats() {
+            document.getElementById('totalParticipants').textContent = participants.length;
+        }
+
+        // Open registration modal
+        function openRegistration() {
+            document.getElementById('registrationModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close registration modal
+        function closeRegistration() {
+            document.getElementById('registrationModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Open submission modal
+        function openSubmission() {
+            document.getElementById('submissionModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close submission modal
+        function closeSubmission() {
+            document.getElementById('submissionModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Handle registration form submission
+        function handleRegistration(event) {
+            event.preventDefault();
+            
+            const participant = {
+                name: document.getElementById('participantName').value,
+                phone: document.getElementById('participantPhone').value,
+                flat: document.getElementById('participantFlat').value,
+                email: document.getElementById('participantEmail').value,
+                transactionId: document.getElementById('transactionId').value,
+                registrationTime: new Date().toISOString(),
+                registrationNumber: 'ZS' + Date.now().toString().slice(-6)
+            };
+
+            participants.push(participant);
+            saveParticipants();
+
+            // Show success message
+            document.getElementById('successMessage').style.display = 'block';
+            
+            // Send WhatsApp confirmation
+            const message = `🎉 Welcome to ZenStars!\n\n` +
+                `Registration Confirmed ✅\n` +
+                `Name: ${participant.name}\n` +
+                `Reg. No: ${participant.registrationNumber}\n` +
+                `Challenge: Rangoli Mastery\n` +
+                `Prize: ₹500\n\n` +
+                `Submit your entry by Friday midnight!\n` +
+                `Good luck, champion! 🏆`;
+            
+            window.open(`https://wa.me/918341346818?text=${encodeURIComponent(message)}`, '_blank');
+
+            // Reset form after 2 seconds
+            setTimeout(() => {
+                document.getElementById('registrationForm').reset();
+                document.getElementById('successMessage').style.display = 'none';
+                closeRegistration();
+                alert(`✅ Registration Successful!\n\nYour Registration Number: ${participant.registrationNumber}\n\nSave this number! You'll need it to submit your entry.\n\nCheck your WhatsApp for confirmation.`);
+            }, 2000);
+        }
+
+        // Handle submission form
+        function handleSubmission(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('submitterName').value;
+            const regNumber = document.getElementById('registrationNumber').value;
+            const description = document.getElementById('entryDescription').value;
+
+            // Show success message
+            document.getElementById('submissionSuccess').style.display = 'block';
+            
+            // Send WhatsApp confirmation
+            const message = `📤 Entry Submitted!\n\n` +
+                `Name: ${name}\n` +
+                `Reg. No: ${regNumber}\n` +
+                `Time: ${new Date().toLocaleString()}\n\n` +
+                `Your entry has been received!\n` +
+                `Winner announcement: Sunday 7 PM\n\n` +
+                `Good luck! 🏆`;
+            
+            window.open(`https://wa.me/918341346818?text=${encodeURIComponent(message)}`, '_blank');
+
+            setTimeout(() => {
+                document.getElementById('submissionForm').reset();
+                document.getElementById('submissionSuccess').style.display = 'none';
+                closeSubmission();
+                alert('✅ Entry Submitted Successfully!\n\nWinner will be announced on Sunday at 7 PM.\n\nGood luck, champion! 🏆');
+            }, 2000);
+        }
+
+        // Update timer (simplified version)
+        function updateTimer() {
+            const now = new Date();
+            const dayOfWeek = now.getDay();
+            const friday = new Date(now);
+            friday.setDate(now.getDate() + (5 - dayOfWeek + 7) % 7);
+            friday.setHours(23, 59, 59);
+            
+            const diff = friday - now;
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            
+            document.getElementById('challengeTimer').textContent = 
+                `⏰ Time Remaining: ${days} days ${hours} hours`;
+        }
+
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Initialize
+        loadParticipants();
+        updateTimer();
+        setInterval(updateTimer, 3600000); // Update every hour
+
+        // Add animation on scroll
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -806,21 +907,31 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.timeline-card, .challenge-card, .revenue-card, .benefit-card').forEach(el => {
+        document.querySelectorAll('.stat-card, .leaderboard-item').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'all 0.6s ease-out';
             observer.observe(el);
         });
 
-        // Parallax effect on hero emojis
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const parallax = document.querySelector('.hero::before');
-            if(parallax) {
-                const yPos = -(scrolled * 0.3);
+        // Share functionality
+        function shareChallenge() {
+            const text = `🎯 Join ZenStars Weekly Challenge!\n\n` +
+                `This Week: Rangoli Mastery 🎨\n` +
+                `Entry: ₹20 | Prize: ₹500\n` +
+                `Deadline: Friday\n\n` +
+                `Join now and showcase your talent!`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: 'ZenStars Challenge',
+                    text: text,
+                    url: window.location.href
+                });
+            } else {
+                window.open(`https://wa.me/?text=${encodeURIComponent(text + '\n' + window.location.href)}`, '_blank');
             }
-        });
+        }
     </script>
 </body>
 </html>
