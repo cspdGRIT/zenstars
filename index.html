@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZenStars - Weekly Community Challenges</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
+            color: white;
+            padding: 120px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '⛰️🏆🎯🚀⭐';
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.15;
+            top: 10%;
+            left: 5%;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '🎪🎨🏃💪🌟';
+            position: absolute;
+            font-size: 120px;
+            opacity: 0.15;
+            bottom: 10%;
+            right: 5%;
+            animation: float 10s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .hero-badge {
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 10px 25px;
+            border-radius: 50px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: 600;
+            border: 2px solid rgba(255,255,255,0.4);
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.3); }
+            50% { box-shadow: 0 0 40px rgba(255,255,255,0.6); }
+        }
+
+        .hero h1 {
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            letter-spacing: 2px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .hero .description {
+            font-size: 1.2em;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            opacity: 0.95;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+
+        .btn {
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-size: 1.2em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.4s;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: white;
+            color: #f5576c;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 45px rgba(0,0,0,0.4);
+        }
+
+        .btn-chaicheers {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+            color: white;
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.4);
+        }
+
+        .btn-chaicheers:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 45px rgba(255, 107, 107, 0.6);
+            background: linear-gradient(135deg, #ee5a6f 0%, #ff6b6b 100%);
+        }
+
+        .mountain-divider {
+            width: 100%;
+            height: 80px;
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 50%, 0 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #f5576c, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 800;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3em;
+            color: #666;
+            margin-bottom: 50px;
+        }
+
+        .how-it-works {
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe6f0 100%);
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .timeline-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .timeline-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #f5576c, #4facfe);
+        }
+
+        .timeline-card:hover {
+            transform: translateY(-10px) rotate(2deg);
+            box-shadow: 0 20px 50px rgba(245, 87, 108, 0.3);
+        }
+
+        .timeline-card .day {
+            font-size: 2.5em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #f5576c, #4facfe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+        }
+
+        .timeline-card .icon {
+            font-size: 4em;
+            margin: 20px 0;
+        }
+
+        .timeline-card h3 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+        }
+
+        .timeline-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .challenges-section {
+            background: linear-gradient(135deg, #e0f7ff 0%, #f0e6ff 100%);
+        }
+
+        .challenge-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .challenge-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            transition: all 0.4s;
+            cursor: pointer;
+        }
+
+        .challenge-card:hover {
+            transform: scale(1.05) rotate(-2deg);
+            box-shadow: 0 20px 50px rgba(79, 172, 254, 0.3);
+        }
+
+        .challenge-header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .challenge-header .emoji {
+            font-size: 4em;
+            margin-bottom: 15px;
+        }
+
+        .challenge-header h3 {
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+
+        .challenge-body {
+            padding: 30px;
+        }
+
+        .challenge-body p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .challenge-body .prize {
+            background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 700;
+            color: #d63031;
+            margin-top: 20px;
+            font-size: 1.2em;
+        }
+
+        .revenue-section {
+            background: linear-gradient(135deg, #2d3436 0%, #000000 100%);
+            color: white;
+            padding: 100px 20px;
+        }
+
+        .revenue-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .revenue-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 2px solid rgba(255,255,255,0.2);
+            transition: all 0.4s;
+        }
+
+        .revenue-card:hover {
+            background: rgba(255,255,255,0.15);
+            transform: translateY(-10px);
+            border-color: #4facfe;
+        }
+
+        .revenue-card .icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .revenue-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            color: #4facfe;
+        }
+
+        .revenue-card .amount {
+            font-size: 2.5em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 20px 0;
+        }
+
+        .benefits-section {
+            padding: 100px 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .benefit-card {
+            text-align: center;
+            padding: 40px 20px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+            transition: all 0.4s;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(245, 87, 108, 0.2);
+        }
+
+        .benefit-card .icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            color: #f5576c;
+            font-size: 1.4em;
+            margin-bottom: 15px;
+        }
+
+        .benefit-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 50%, #4facfe 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '🌟⭐✨💫🏆';
+            position: absolute;
+            font-size: 100px;
+            opacity: 0.1;
+            top: 20%;
+            left: 10%;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .cta-section h2 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .cta-section .highlight {
+            font-size: 1.5em;
+            margin: 30px 0;
+            font-weight: 600;
+        }
+
+        .stats-banner {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin: 50px 0;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-item .number {
+            font-size: 4em;
+            font-weight: 800;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .stat-item .label {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+
+        .footer {
+            background: #1a1a2e;
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .footer-chaicheers {
+            margin: 30px 0;
+        }
+
+        .footer p {
+            margin: 15px 0;
+            opacity: 0.8;
+        }
+
+        .floating-chai {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8em;
+            }
+            
+            .hero .subtitle {
+                font-size: 1.3em;
+            }
+            
+            .section-title {
+                font-size: 2.2em;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .floating-chai {
+                bottom: 20px;
+                right: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-badge">🏔️ ADVENTURE AWAITS</div>
+        <h1>⚡ ZENSTARS ⚡</h1>
+        <p class="subtitle">Weekly Community Challenges That Ignite Your Spirit</p>
+        <p class="description">Join the adventure! Every week, a new challenge. Every challenge, a new story. Entry ₹20, Glory priceless! 🏆</p>
+        
+        <div class="button-group">
+            <button class="btn btn-primary">🚀 Join The Challenge</button>
+            <a href="https://cspdgrit.github.io/chaicheers/" target="_blank" class="btn btn-chaicheers">☕ ChaiCheers Hub</a>
+        </div>
+    </div>
+
+    <div class="mountain-divider"></div>
+
+    <div class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">⛰️ Your Weekly Adventure Journey</h2>
+            <p class="section-subtitle">Four simple steps to glory and community bonding!</p>
+            
+            <div class="timeline">
+                <div class="timeline-card">
+                    <div class="day">Monday</div>
+                    <div class="icon">📢</div>
+                    <h3>Challenge Announced</h3>
+                    <p>The week's adventure is revealed! Fitness? Creativity? Speed? Get ready to compete!</p>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="day">Tue-Fri</div>
+                    <div class="icon">💪</div>
+                    <h3>Take Action</h3>
+                    <p>Complete your challenge, record your proof, and submit before Friday midnight!</p>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="day">Saturday</div>
+                    <div class="icon">🗳️</div>
+                    <h3>Voting Begins</h3>
+                    <p>Community votes or judges evaluate. May the best challenger win!</p>
+                </div>
+
+                <div class="timeline-card">
+                    <div class="day">Sunday</div>
+                    <div class="icon">🏆</div>
+                    <h3>Winners Crowned</h3>
+                    <p>Results announced! Winners celebrated! Next challenge teased! Repeat the adventure!</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="https://cspdgrit.github.io/chaicheers/" target="_blank" class="btn btn-chaicheers">☕ Celebrate With ChaiCheers</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="challenges-section">
+        <div class="container">
+            <h2 class="section-title">🎯 Epic Challenge Examples</h2>
+            <p class="section-subtitle">From creative to fitness, every week brings new adventures!</p>
+            
+            <div class="challenge-grid">
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <div class="emoji">🎨</div>
+                        <h3>Rangoli Mastery</h3>
+                    </div>
+                    <div class="challenge-body">
+                        <p>Create the most creative rangoli using only 3 colors. Limited space, unlimited creativity!</p>
+                        <div class="prize">🏆 Winner: ₹500</div>
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <div class="emoji">⏱️</div>
+                        <h3>Plank Champion</h3>
+                    </div>
+                    <div class="challenge-body">
+                        <p>10-minute plank challenge! Test your endurance and mental strength. Can you hold it?</p>
+                        <div class="prize">🏆 Winner: ₹500</div>
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <div class="emoji">🌱</div>
+                        <h3>Garden Glory</h3>
+                    </div>
+                    <div class="challenge-body">
+                        <p>Best balcony garden transformation photo. Show us your green thumb magic!</p>
+                        <div class="prize">🏆 Winner: ₹500</div>
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <div class="emoji">🥤</div>
+                        <h3>Recipe Race</h3>
+                    </div>
+                    <div class="challenge-body">
+                        <p>Fastest aam panna recipe video. Speed meets flavor in this culinary adventure!</p>
+                        <div class="prize">🏆 Winner: ₹500</div>
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <div class="emoji">👗</div>
+                        <h3>Closet Quest</h3>
+                    </div>
+                    <div class="challenge-body">
+                        <p>Most organized closet transformation. From chaos to zen in one weekend!</p>
+                        <div class="prize">🏆 Winner: ₹500</div>
+                    </div>
+                </div>
+
+                <div class="challenge-card">
+                    <div class="challenge-header">
+                        <div class="emoji">🎭</div>
+                        <h3>Story Time</h3>
+                    </div>
+                    <div class="challenge-body">
+                        <p>Best 2-minute children's story (video or audio). Entertain, educate, inspire!</p>
+                        <div class="prize">🏆 Winner: ₹500</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="revenue-section">
+        <div class="container">
+            <h2 class="section-title" style="-webkit-text-fill-color: white;">💰 The Numbers Game</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Simple math, powerful results</p>
+            
+            <div class="revenue-grid">
+                <div class="revenue-card">
+                    <div class="icon">💵</div>
+                    <h3>Entry Fee</h3>
+                    <div class="amount">₹20</div>
+                    <p>Low barrier, high participation. Everyone can play!</p>
+                </div>
+
+                <div class="revenue-card">
+                    <div class="icon">👥</div>
+                    <h3>Weekly Players</h3>
+                    <div class="amount">50</div>
+                    <p>Average participants per challenge in a 200-family society</p>
+                </div>
+
+                <div class="revenue-card">
+                    <div class="icon">🎁</div>
+                    <h3>Prize Pool</h3>
+                    <div class="amount">₹500</div>
+                    <p>Winner takes 50%, runners-up get recognition + sponsored prizes</p>
+                </div>
+
+                <div class="revenue-card">
+                    <div class="icon">📈</div>
+                    <h3>Your Profit</h3>
+                    <div class="amount">₹500</div>
+                    <p>Per week × 4 weeks = ₹2,000/month per society!</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <div class="highlight">☕ Scale to 5 societies = ₹10,000/month! ChaiCheers to that! 🎉</div>
+                <a href="https://cspdgrit.github.io/chaicheers/" target="_blank" class="btn btn-chaicheers" style="margin-top: 30px;">Celebrate Success at ChaiCheers</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="benefits-section">
+        <div class="container">
+            <h2 class="section-title">✨ Why ZenStars Wins</h2>
+            <p class="section-subtitle">The perfect blend of fun, profit, and community building</p>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="icon">🎯</div>
+                    <h3>Zero Inventory</h3>
+                    <p>Just coordination! No products, no storage, no overhead. Pure service business.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="icon">📱</div>
+                    <h3>Viral Potential</h3>
+                    <p>User-generated content spreads naturally. Every challenge is social media gold!</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="icon">🔄</div>
+                    <h3>Weekly Revenue</h3>
+                    <p>Recurring income model. Build habit, build loyalty, build profits!</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="icon">🏘️</div>
+                    <h3>Scales Fast</h3>
+                    <p>Works in ANY community size. From 50 families to 500, the model adapts!</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="icon">🎪</div>
+                    <h3>Sponsor Magnet</h3>
+                    <p>Local gyms, cafes, brands love sponsoring. Extra prizes = zero cost to you!</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="icon">⏰</div>
+                    <h3>Low Time</h3>
+                    <p>2-3 hours per week. Perfect side hustle or passive income stream!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h2>🚀 Ready to Start Your Adventure?</h2>
+        <p class="highlight">☕ Launch ZenStars in your community this Monday! ChaiCheers to bold beginnings! 🎊</p>
+        
+        <div class="stats-banner">
+            <div class="stat-item">
+                <div class="number">7</div>
+                <div class="label">Days to Launch</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">₹20</div>
+                <div class="label">Entry Fee</div>
+            </div>
+            <div class="stat-item">
+                <div class="number">52</div>
+                <div class="label">Challenges/Year</div>
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-primary">🎯 Launch ZenStars Now</button>
+            <button class="btn btn-primary" style="background: transparent; border: 3px solid white; color: white;">📥 Download Launch Kit</button>
+            <a href="https://cspdgrit.github.io/chaicheers/" target="_blank" class="btn btn-chaicheers">☕ Join ChaiCheers Community</a>
+        </div>
+
+        <div style="max-width: 900px; margin: 60px auto; padding: 40px; background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); border-radius: 20px; text-align: left;">
+            <h3 style="font-size: 2em; margin-bottom: 25px; text-align: center;">🗓️ 30-Day Launch Roadmap</h3>
+            <div style="line-height: 2.2; font-size: 1.15em;">
+                <strong>Week 1:</strong> Launch in your society WhatsApp group → Build excitement<br>
+                <strong>Week 2:</strong> Run first FREE challenge (fitness/photo) → Test engagement<br>
+                <strong>Week 3:</strong> Start charging ₹20 → Give winner ₹500 cash<br>
+                <strong>Week 4:</strong> Get local brand to sponsor → ₹1000 prize pool<br>
+                <strong>Month 2:</strong> Expand to 3-5 nearby societies<br>
+                <strong>Month 3:</strong> Create Instagram page → Go city-wide! 🚀
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <h2 style="font-size: 2.5em; margin-bottom: 20px;">⭐ ZENSTARS ⭐</h2>
+        <p style="font-size: 1.3em;">Where Community Meets Adventure</p>
+        <div class="footer-chaicheers">
+            <a href="https://cspdgrit.github.io/chaicheers/" target="_blank" class="btn btn-chaicheers">☕ Visit ChaiCheers</a>
+        </div>
+        <p>Every Challenge • Every Week • Every Victory</p>
+        <p style="margin-top: 30px; opacity: 0.6;">☕ ChaiCheers to celebrating together! 🎉</p>
+    </div>
+
+    <!-- Floating ChaiCheers Button -->
+    <a href="https://cspdgrit.github.io/chaicheers/" target="_blank" class="btn btn-chaicheers floating-chai">☕ ChaiCheers</a>
+
+    <script>
+        // Button click animations
+        document.querySelectorAll('button, .btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if(!this.href) {
+                    this.style.transform = 'scale(0.95)';
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 150);
+                }
+            });
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.timeline-card, .challenge-card, .revenue-card, .benefit-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Parallax effect on hero emojis
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero::before');
+            if(parallax) {
+                const yPos = -(scrolled * 0.3);
+            }
+        });
+    </script>
+</body>
+</html>
