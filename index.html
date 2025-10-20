@@ -166,43 +166,6 @@
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
         }
 
-        .tabs {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 30px;
-            border-bottom: 2px solid #e2e8f0;
-        }
-
-        .tab {
-            padding: 15px 25px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            font-weight: 600;
-            color: #718096;
-            border-bottom: 3px solid transparent;
-            transition: all 0.3s;
-        }
-
-        .tab.active {
-            color: #667eea;
-            border-bottom-color: #667eea;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-            animation: fadeIn 0.5s;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
         .generator-options {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -407,65 +370,110 @@
             color: #1e40af;
         }
 
-        .commission-calculator {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            margin-top: 40px;
+        .platform-fee-badge {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            display: inline-block;
+            font-weight: 600;
+            margin: 20px 0;
+            box-shadow: 0 5px 20px rgba(16, 185, 129, 0.3);
         }
 
-        .calc-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .calc-row.total {
-            border-top: 3px solid #667eea;
-            border-bottom: none;
-            font-weight: 700;
-            font-size: 1.2em;
-            color: #667eea;
-            margin-top: 15px;
-        }
-
-        .revenue-grid {
+        .challenges-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             margin-top: 40px;
         }
 
-        .revenue-card {
+        .challenge-card {
             background: white;
-            padding: 35px;
             border-radius: 20px;
+            overflow: hidden;
             box-shadow: 0 5px 25px rgba(0, 0, 0, 0.08);
             transition: all 0.3s;
+            position: relative;
         }
 
-        .revenue-card:hover {
-            transform: translateY(-8px);
+        .challenge-card:hover {
+            transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(102, 126, 234, 0.15);
         }
 
-        .revenue-icon {
-            font-size: 3em;
+        .challenge-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .challenge-icon {
+            font-size: 3.5em;
             margin-bottom: 15px;
         }
 
-        .revenue-card h4 {
-            color: #2d3748;
-            font-size: 1.3em;
-            margin-bottom: 15px;
+        .challenge-title {
+            font-size: 1.5em;
             font-weight: 700;
+            margin-bottom: 10px;
         }
 
-        .revenue-card p {
+        .challenge-content {
+            padding: 30px;
+        }
+
+        .challenge-desc {
             color: #718096;
-            line-height: 1.6;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .challenge-meta {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-top: 2px solid #e2e8f0;
+            font-size: 0.95em;
+            color: #718096;
+            margin-bottom: 20px;
+        }
+
+        .participants-badge {
+            background: #f7fafc;
+            padding: 10px 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .participants-count {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .register-btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .register-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+
+        .register-btn.registered {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
         .categories-grid {
@@ -524,6 +532,65 @@
             background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
         }
 
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            animation: modalSlideIn 0.3s;
+        }
+
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-header h3 {
+            color: #667eea;
+            font-size: 1.8em;
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 2em;
+            cursor: pointer;
+            color: #718096;
+        }
+
         .footer {
             background: #2d3748;
             color: white;
@@ -573,41 +640,15 @@
             flex: 1;
         }
 
-        .history-item {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            margin-bottom: 15px;
-            border-left: 4px solid #667eea;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .history-item:hover {
-            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.15);
-            transform: translateX(5px);
-        }
-
-        .history-item h4 {
-            color: #2d3748;
-            margin-bottom: 8px;
-        }
-
-        .history-item .meta {
-            color: #718096;
-            font-size: 0.9em;
-        }
-
         @media (max-width: 768px) {
             .hero h1 { font-size: 2.5em; }
             .section-title { font-size: 2em; }
             .generator-container { padding: 30px 20px; }
-            .categories-grid { grid-template-columns: 1fr; }
+            .challenges-grid, .categories-grid { grid-template-columns: 1fr; }
             .floating-btn { bottom: 20px; right: 20px; padding: 12px 24px; font-size: 0.95em; }
             .api-provider { flex-direction: column; }
             .action-buttons { flex-direction: column; }
-            .tabs { overflow-x: auto; }
-            .revenue-grid { grid-template-columns: 1fr; }
+            .modal-content { padding: 30px 20px; }
         }
     </style>
 </head>
@@ -617,10 +658,11 @@
             <h1>⚡ ZENSTARS ⚡</h1>
             <p class="tagline">AI-Powered Community Challenges That Ignite Your Spirit</p>
             <div class="ai-badge">🤖 Powered by Open-Source LLMs</div>
-            <p style="font-size: 1.15em; margin-top: 20px; opacity: 0.95;">Generate unlimited challenges, manage events, and earn with our commission model!</p>
+            <div class="platform-fee-badge">💎 Only 10% Platform Fee • 90% for Prizes & Events!</div>
+            <p style="font-size: 1.15em; margin-top: 20px; opacity: 0.95;">Generate unlimited challenges, register for events, and compete with your community!</p>
             <div class="hero-buttons">
                 <button class="btn btn-primary" onclick="scrollToGenerator()">🚀 Generate Challenge</button>
-                <button class="btn btn-secondary" onclick="scrollToCommission()">💰 Commission Model</button>
+                <button class="btn btn-secondary" onclick="scrollToChallenges()">🏆 Active Challenges</button>
             </div>
         </div>
     </div>
@@ -631,276 +673,229 @@
             <p class="section-subtitle">Let AI create personalized challenges based on your preferences</p>
             
             <div class="generator-container">
-                <div class="tabs">
-                    <button class="tab active" data-tab="generate">✨ Generate</button>
-                    <button class="tab" data-tab="calculator">💰 Commission Calculator</button>
-                    <button class="tab" data-tab="history">📜 History</button>
-                </div>
-
-                <!-- Generate Tab -->
-                <div class="tab-content active" data-content="generate">
-                    <div class="api-settings">
-                        <h3>⚙️ AI Provider Settings</h3>
-                        <div class="api-provider">
-                            <button class="provider-btn active" data-provider="groq">Groq (Fast & Free)</button>
-                            <button class="provider-btn" data-provider="huggingface">HuggingFace</button>
-                            <button class="provider-btn" data-provider="together">Together AI</button>
-                        </div>
-                        <div class="input-group">
-                            <label>API Key (Required for AI Generation)</label>
-                            <input type="password" id="apiKey" placeholder="Enter your API key">
-                        </div>
-                        <div class="note-box api-note">
-                            💡 <strong>Get Free API Keys:</strong><br>
-                            • Groq: <a href="https://console.groq.com" target="_blank" style="color: #667eea; text-decoration: underline;">console.groq.com</a> (Recommended - Fast!)<br>
-                            • HuggingFace: <a href="https://huggingface.co/settings/tokens" target="_blank" style="color: #667eea; text-decoration: underline;">huggingface.co/settings/tokens</a><br>
-                            • Together: <a href="https://api.together.xyz" target="_blank" style="color: #667eea; text-decoration: underline;">api.together.xyz</a>
-                        </div>
+                <div class="api-settings">
+                    <h3>⚙️ AI Provider Settings</h3>
+                    <div class="api-provider">
+                        <button class="provider-btn active" data-provider="groq">Groq (Fast & Free)</button>
+                        <button class="provider-btn" data-provider="huggingface">HuggingFace</button>
+                        <button class="provider-btn" data-provider="together">Together AI</button>
                     </div>
-
-                    <div class="generator-options">
-                        <button class="option-btn active" data-mode="new">✨ New Challenge</button>
-                        <button class="option-btn" data-mode="variation">🔄 Variation</button>
-                        <button class="option-btn" data-mode="tips">💡 Get Tips</button>
-                        <button class="option-btn" data-mode="judging">⚖️ Judging Criteria</button>
-                    </div>
-
-                    <div id="inputFields">
-                        <div class="input-group">
-                            <label>Challenge Category</label>
-                            <select id="category">
-                                <option value="art">🎨 Art & Craft</option>
-                                <option value="fitness">💪 Fitness</option>
-                                <option value="cooking">🍳 Cooking</option>
-                                <option value="home">🏠 Home & Garden</option>
-                                <option value="performance">🎭 Performance</option>
-                                <option value="treasure">🗺️ Treasure Hunt</option>
-                            </select>
-                        </div>
-
-                        <div class="input-group">
-                            <label>Difficulty Level</label>
-                            <select id="difficulty">
-                                <option value="easy">Easy (Everyone can try)</option>
-                                <option value="medium">Medium (Some skill needed)</option>
-                                <option value="hard">Hard (Expert level)</option>
-                            </select>
-                        </div>
-
-                        <div class="input-group">
-                            <label>Duration</label>
-                            <select id="duration">
-                                <option value="quick">Quick (Under 1 hour)</option>
-                                <option value="medium">Medium (1-3 hours)</option>
-                                <option value="long">Long (3+ hours or multi-day)</option>
-                            </select>
-                        </div>
-
-                        <div class="input-group">
-                            <label>Additional Requirements (Optional)</label>
-                            <textarea id="requirements" rows="3" placeholder="E.g., Use only eco-friendly materials, Indoor activity, Family-friendly, etc."></textarea>
-                        </div>
-                    </div>
-
-                    <button class="generate-btn" id="generateBtn">
-                        <span>🚀</span>
-                        <span>Generate with AI</span>
-                    </button>
-
-                    <div class="result-box" id="resultBox">
-                        <h3 id="resultTitle">Generated Challenge</h3>
-                        <div class="result-content" id="resultContent"></div>
-                        <div class="action-buttons">
-                            <button class="btn btn-primary" onclick="saveChallenge()">💾 Save</button>
-                            <button class="btn btn-secondary" onclick="shareChallenge()">📤 Share</button>
-                            <button class="btn btn-secondary" onclick="regenerate()">🔄 Regenerate</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Commission Calculator Tab -->
-                <div class="tab-content" data-content="calculator">
-                    <div class="note-box info-note" style="margin-bottom: 30px;">
-                        💼 <strong>ZenStars Commission Model:</strong> We charge 15% platform fee on all transactions to maintain AI services, platform infrastructure, and support.
-                    </div>
-
                     <div class="input-group">
-                        <label>Challenge Type</label>
-                        <select id="calcType" onchange="updateCalculator()">
-                            <option value="registration">Registration Fee Based (e.g., Treasure Hunt)</option>
-                            <option value="prize">Prize Pool Based (e.g., Voting Competitions)</option>
+                        <label>API Key (Required for AI Generation)</label>
+                        <input type="password" id="apiKey" placeholder="Enter your API key">
+                    </div>
+                    <div class="note-box api-note">
+                        💡 <strong>Get Free API Keys:</strong><br>
+                        • Groq: <a href="https://console.groq.com" target="_blank" style="color: #667eea; text-decoration: underline;">console.groq.com</a> (Recommended - Fast & Free!)<br>
+                        • HuggingFace: <a href="https://huggingface.co/settings/tokens" target="_blank" style="color: #667eea; text-decoration: underline;">huggingface.co/settings/tokens</a><br>
+                        • Together: <a href="https://api.together.xyz" target="_blank" style="color: #667eea; text-decoration: underline;">api.together.xyz</a>
+                    </div>
+                </div>
+
+                <div class="generator-options">
+                    <button class="option-btn active" data-mode="new">✨ New Challenge</button>
+                    <button class="option-btn" data-mode="variation">🔄 Variation</button>
+                    <button class="option-btn" data-mode="tips">💡 Get Tips</button>
+                    <button class="option-btn" data-mode="judging">⚖️ Judging Criteria</button>
+                </div>
+
+                <div id="inputFields">
+                    <div class="input-group">
+                        <label>Challenge Category</label>
+                        <select id="category">
+                            <option value="art">🎨 Art & Craft</option>
+                            <option value="fitness">💪 Fitness</option>
+                            <option value="cooking">🍳 Cooking</option>
+                            <option value="home">🏠 Home & Garden</option>
+                            <option value="performance">🎭 Performance</option>
+                            <option value="treasure">🗺️ Treasure Hunt</option>
                         </select>
                     </div>
 
-                    <div class="input-group" id="regFeeGroup">
-                        <label>Registration Fee per Participant (₹)</label>
-                        <input type="number" id="regFee" value="50" min="0" onchange="updateCalculator()">
+                    <div class="input-group">
+                        <label>Difficulty Level</label>
+                        <select id="difficulty">
+                            <option value="easy">Easy (Everyone can try)</option>
+                            <option value="medium">Medium (Some skill needed)</option>
+                            <option value="hard">Hard (Expert level)</option>
+                        </select>
                     </div>
 
                     <div class="input-group">
-                        <label>Expected Participants</label>
-                        <input type="number" id="participants" value="50" min="1" onchange="updateCalculator()">
+                        <label>Duration</label>
+                        <select id="duration">
+                            <option value="quick">Quick (Under 1 hour)</option>
+                            <option value="medium">Medium (1-3 hours)</option>
+                            <option value="long">Long (3+ hours or multi-day)</option>
+                        </select>
                     </div>
 
-                    <div class="input-group" id="prizeGroup" style="display: none;">
-                        <label>Total Prize Money (₹)</label>
-                        <input type="number" id="prizeMoney" value="5000" min="0" onchange="updateCalculator()">
-                    </div>
-
-                    <div class="commission-calculator">
-                        <h3 style="color: #667eea; margin-bottom: 20px;">💰 Revenue Breakdown</h3>
-                        <div class="calc-row">
-                            <span>Total Collection:</span>
-                            <span id="totalCollection">₹0</span>
-                        </div>
-                        <div class="calc-row">
-                            <span>Platform Fee (15%):</span>
-                            <span id="platformFee">₹0</span>
-                        </div>
-                        <div class="calc-row">
-                            <span>Prize Money:</span>
-                            <span id="prizeAmount">₹0</span>
-                        </div>
-                        <div class="calc-row total">
-                            <span>Your Earnings (Organizer):</span>
-                            <span id="organizerEarning">₹0</span>
-                        </div>
-                    </div>
-
-                    <div class="note-box success-note" style="margin-top: 20px;">
-                        ✅ <strong>Transparent Pricing:</strong> All fees are clearly communicated to participants. Platform fee covers AI generation, hosting, payment processing, and support.
+                    <div class="input-group">
+                        <label>Additional Requirements (Optional)</label>
+                        <textarea id="requirements" rows="3" placeholder="E.g., Use only eco-friendly materials, Indoor activity, Family-friendly, etc."></textarea>
                     </div>
                 </div>
 
-                <!-- History Tab -->
-                <div class="tab-content" data-content="history">
-                    <div id="historyList">
-                        <div class="note-box info-note">
-                            📜 <strong>Challenge History:</strong> Your generated challenges will appear here. Click on any challenge to reload it.
-                        </div>
+                <button class="generate-btn" id="generateBtn">
+                    <span>🚀</span>
+                    <span>Generate with AI</span>
+                </button>
+
+                <div class="result-box" id="resultBox">
+                    <h3 id="resultTitle">Generated Challenge</h3>
+                    <div class="result-content" id="resultContent"></div>
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="saveChallenge()">💾 Save</button>
+                        <button class="btn btn-secondary" onclick="shareChallenge()">📤 Share</button>
+                        <button class="btn btn-secondary" onclick="regenerate()">🔄 Regenerate</button>
                     </div>
-                    <button class="btn btn-secondary" style="width: 100%; margin-top: 20px;" onclick="clearHistory()">🗑️ Clear All History</button>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container" id="commission">
-        <h2 class="section-title">💰 Revenue Model</h2>
-        <p class="section-subtitle">How ZenStars creates sustainable value for everyone</p>
-        
-        <div class="revenue-grid">
-            <div class="revenue-card">
-                <div class="revenue-icon">🎯</div>
-                <h4>Platform Fee (15%)</h4>
-                <p>Charged on all transactions to maintain AI services, platform infrastructure, payment processing, and customer support.</p>
-            </div>
-
-            <div class="revenue-card">
-                <div class="revenue-icon">🏆</div>
-                <h4>Organizer Earnings (85%)</h4>
-                <p>You keep 85% after prize money. Organize multiple challenges, build community, and earn consistently.</p>
-            </div>
-
-            <div class="revenue-card">
-                <div class="revenue-icon">🤖</div>
-                <h4>AI-Powered Tools</h4>
-                <p>Unlimited challenge generation, smart tips, judging criteria - all included. No extra charges for AI features!</p>
-            </div>
-
-            <div class="revenue-card">
-                <div class="revenue-icon">📊</div>
-                <h4>Analytics Dashboard</h4>
-                <p>Track your earnings, participant engagement, and challenge performance with detailed insights (Coming Soon).</p>
-            </div>
-
-            <div class="revenue-card">
-                <div class="revenue-icon">🔒</div>
-                <h4>Secure Payments</h4>
-                <p>Integrated payment gateway with automated split - participants pay, we distribute instantly to organizers.</p>
-            </div>
-
-            <div class="revenue-card">
-                <div class="revenue-icon">🌟</div>
-                <h4>Premium Features</h4>
-                <p>Upgrade for branded challenges, priority support, advanced analytics, and reduced platform fee to 10%!</p>
-            </div>
-        </div>
-
-        <div class="commission-calculator" style="max-width: 600px; margin: 60px auto 0;">
-            <h3 style="color: #667eea; margin-bottom: 20px; text-align: center;">💼 Example: Monthly Earnings Potential</h3>
-            <div class="calc-row">
-                <span>4 Challenges per Month</span>
-                <span></span>
-            </div>
-            <div class="calc-row">
-                <span>50 Participants × ₹50 each</span>
-                <span>₹2,500/challenge</span>
-            </div>
-            <div class="calc-row">
-                <span>Platform Fee (15%)</span>
-                <span>- ₹375</span>
-            </div>
-            <div class="calc-row">
-                <span>Prize Money</span>
-                <span>- ₹1,000</span>
-            </div>
-            <div class="calc-row">
-                <span>Earnings per Challenge</span>
-                <span>₹1,125</span>
-            </div>
-            <div class="calc-row total">
-                <span>Monthly Earnings</span>
-                <span>₹4,500</span>
             </div>
         </div>
     </div>
 
     <div class="container" id="challenges">
+        <h2 class="section-title">🏆 Active Challenges</h2>
+        <p class="section-subtitle">Join these ongoing challenges and showcase your talent!</p>
+        
+        <div class="challenges-grid">
+            <div class="challenge-card">
+                <div class="challenge-header">
+                    <div class="challenge-icon">🎨</div>
+                    <h3 class="challenge-title">3-Color Rangoli Challenge</h3>
+                </div>
+                <div class="challenge-content">
+                    <p class="challenge-desc">Create the most creative rangoli using only 3 colors of your choice. Limited space, unlimited creativity! Submit photo by Friday midnight.</p>
+                    <div class="challenge-meta">
+                        <span>💰 Prize: ₹2,000</span>
+                        <span>⏱️ 5 days left</span>
+                    </div>
+                    <div class="participants-badge">
+                        <div class="participants-count" data-challenge="rangoli">23</div>
+                        <div style="color: #718096; font-size: 0.9em;">participants registered</div>
+                    </div>
+                    <button class="register-btn" onclick="registerChallenge('rangoli', '3-Color Rangoli Challenge', 50)">
+                        Register Now (₹50)
+                    </button>
+                </div>
+            </div>
+
+            <div class="challenge-card">
+                <div class="challenge-header">
+                    <div class="challenge-icon">💪</div>
+                    <h3 class="challenge-title">10-Minute Plank Challenge</h3>
+                </div>
+                <div class="challenge-content">
+                    <p class="challenge-desc">Hold a plank position for 10 minutes! Test your core strength and endurance. Video proof required with continuous recording.</p>
+                    <div class="challenge-meta">
+                        <span>💰 Prize: ₹1,500</span>
+                        <span>⏱️ 3 days left</span>
+                    </div>
+                    <div class="participants-badge">
+                        <div class="participants-count" data-challenge="plank">18</div>
+                        <div style="color: #718096; font-size: 0.9em;">participants registered</div>
+                    </div>
+                    <button class="register-btn" onclick="registerChallenge('plank', '10-Minute Plank Challenge', 30)">
+                        Register Now (₹30)
+                    </button>
+                </div>
+            </div>
+
+            <div class="challenge-card">
+                <div class="challenge-header">
+                    <div class="challenge-icon">🗺️</div>
+                    <h3 class="challenge-title">Community Treasure Hunt</h3>
+                </div>
+                <div class="challenge-content">
+                    <p class="challenge-desc">An exciting treasure hunt across the community! Solve AI-generated clues, find hidden treasures, and race to victory!</p>
+                    <div class="challenge-meta">
+                        <span>💰 Prize: ₹5,000</span>
+                        <span>📅 This Saturday</span>
+                    </div>
+                    <div class="participants-badge">
+                        <div class="participants-count" data-challenge="treasure">42</div>
+                        <div style="color: #718096; font-size: 0.9em;">participants registered</div>
+                    </div>
+                    <button class="register-btn" onclick="registerChallenge('treasure', 'Community Treasure Hunt', 100)">
+                        Register Now (₹100)
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
         <h2 class="section-title">🎯 Challenge Categories</h2>
         <p class="section-subtitle">Pick your passion and start competing today!</p>
         
         <div class="categories-grid">
-            <div class="category-card">
+            <div class="category-card" onclick="selectCategory('art')">
                 <div class="category-icon">🎨</div>
                 <h3 class="category-title">Art & Craft</h3>
                 <p class="category-desc">Rangoli, Drawing, DIY Projects, Creative Crafts</p>
                 <span class="status-badge">Active Now</span>
             </div>
 
-            <div class="category-card">
+            <div class="category-card" onclick="selectCategory('fitness')">
                 <div class="category-icon">💪</div>
                 <h3 class="category-title">Fitness</h3>
                 <p class="category-desc">Plank, Yoga, Running, Sports Challenges</p>
                 <span class="status-badge">Active Now</span>
             </div>
 
-            <div class="category-card">
+            <div class="category-card" onclick="selectCategory('cooking')">
                 <div class="category-icon">🍳</div>
                 <h3 class="category-title">Cooking</h3>
                 <p class="category-desc">Recipe Creation, Baking, Speed Cooking</p>
                 <span class="status-badge coming-soon">Coming Soon</span>
             </div>
 
-            <div class="category-card">
+            <div class="category-card" onclick="selectCategory('home')">
                 <div class="category-icon">🏠</div>
                 <h3 class="category-title">Home & Garden</h3>
                 <p class="category-desc">Organization, Gardening, Home Decor</p>
                 <span class="status-badge coming-soon">Coming Soon</span>
             </div>
 
-            <div class="category-card">
+            <div class="category-card" onclick="selectCategory('performance')">
                 <div class="category-icon">🎭</div>
                 <h3 class="category-title">Performance</h3>
                 <p class="category-desc">Dance, Music, Storytelling, Drama</p>
                 <span class="status-badge coming-soon">Coming Soon</span>
             </div>
 
-            <div class="category-card">
+            <div class="category-card" onclick="selectCategory('treasure')">
                 <div class="category-icon">🗺️</div>
                 <h3 class="category-title">Treasure Hunt</h3>
                 <p class="category-desc">Solve clues, find treasures, win big!</p>
                 <span class="status-badge">Special Event</span>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 80px 20px; color: white;">
+        <div class="container">
+            <h2 class="section-title" style="color: white; -webkit-text-fill-color: white;">💎 Platform Model</h2>
+            <p class="section-subtitle" style="color: rgba(255,255,255,0.9);">Simple, transparent, and fair for everyone</p>
+            
+            <div class="categories-grid" style="margin-top: 40px;">
+                <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; border: 2px solid rgba(255,255,255,0.2); text-align: center;">
+                    <div style="font-size: 4em; margin-bottom: 15px;">💰</div>
+                    <h3 style="font-size: 1.6em; margin-bottom: 15px;">10% Platform Fee</h3>
+                    <p style="opacity: 0.95; line-height: 1.7; font-size: 1.1em;">We charge only 10% to maintain AI services, platform, and support</p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; border: 2px solid rgba(255,255,255,0.2); text-align: center;">
+                    <div style="font-size: 4em; margin-bottom: 15px;">🏆</div>
+                    <h3 style="font-size: 1.6em; margin-bottom: 15px;">90% for Community</h3>
+                    <p style="opacity: 0.95; line-height: 1.7; font-size: 1.1em;">Rest goes to prizes, event arrangements, and community benefits</p>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; border: 2px solid rgba(255,255,255,0.2); text-align: center;">
+                    <div style="font-size: 4em; margin-bottom: 15px;">🤖</div>
+                    <h3 style="font-size: 1.6em; margin-bottom: 15px;">Free AI Tools</h3>
+                    <p style="opacity: 0.95; line-height: 1.7; font-size: 1.1em;">Unlimited AI challenge generation at no extra cost!</p>
+                </div>
             </div>
         </div>
     </div>
@@ -911,20 +906,51 @@
         <p style="margin-top: 30px; opacity: 0.7;">Challenge • Compete • Celebrate 🏆</p>
     </div>
 
+    <!-- Registration Modal -->
+    <div class="modal" id="registrationModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Register for Challenge</h3>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <div id="modalBody">
+                <div class="input-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="regName" placeholder="Enter your full name">
+                </div>
+                <div class="input-group">
+                    <label>Email *</label>
+                    <input type="email" id="regEmail" placeholder="Enter your email">
+                </div>
+                <div class="input-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="regPhone" placeholder="Enter your phone number">
+                </div>
+                <div class="note-box info-note" style="margin: 20px 0;">
+                    <strong>Registration Fee:</strong> ₹<span id="regFee">0</span><br>
+                    <strong>Platform Fee (10%):</strong> ₹<span id="platformFee">0</span><br>
+                    <strong>Total:</strong> ₹<span id="totalFee">0</span>
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="confirmRegistration()">
+                    💳 Proceed to Payment
+                </button>
+            </div>
+        </div>
+    </div>
+
     <a href="https://cspdgrit.github.io/chaicheers/" target="_blank" class="floating-btn">☕ ChaiCheers</a>
 
     <script>
-        // State management
         let currentMode = 'new';
         let currentProvider = 'groq';
         let lastGeneratedContent = '';
-        let challengeHistory = [];
+        let currentChallenge = null;
+        let registrations = {};
 
         // Initialize
         window.addEventListener('DOMContentLoaded', () => {
             loadSettings();
-            loadHistory();
-            updateCalculator();
+            loadRegistrations();
         });
 
         function loadSettings() {
@@ -941,61 +967,41 @@
                     btn.classList.toggle('active', btn.dataset.provider === savedProvider);
                 });
             }
+        }
 
-            const savedHistory = localStorage.getItem('zenstars_history');
-            if (savedHistory) {
-                challengeHistory = JSON.parse(savedHistory);
+        function loadRegistrations() {
+            const saved = localStorage.getItem('zenstars_registrations');
+            if (saved) {
+                registrations = JSON.parse(saved);
+                updateParticipantCounts();
+                updateRegistrationButtons();
             }
         }
 
-        function loadHistory() {
-            const historyList = document.getElementById('historyList');
-            if (challengeHistory.length === 0) {
-                historyList.innerHTML = '<div class="note-box info-note">📜 <strong>No history yet.</strong> Generate your first challenge to see it here!</div>';
-                return;
-            }
-
-            historyList.innerHTML = challengeHistory.map((item, index) => `
-                <div class="history-item" onclick="loadFromHistory(${index})">
-                    <h4>${item.mode} - ${item.category}</h4>
-                    <div class="meta">${new Date(item.timestamp).toLocaleString()}</div>
-                </div>
-            `).join('');
-        }
-
-        function loadFromHistory(index) {
-            const item = challengeHistory[index];
-            document.getElementById('resultContent').textContent = item.content;
-            document.getElementById('resultBox').classList.add('visible');
-            lastGeneratedContent = item.content;
-            
-            // Switch to generate tab
-            switchTab('generate');
-            scrollToGenerator();
-        }
-
-        function clearHistory() {
-            if (confirm('Are you sure you want to clear all history?')) {
-                challengeHistory = [];
-                localStorage.removeItem('zenstars_history');
-                loadHistory();
-            }
-        }
-
-        // Tab management
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                const tabName = this.dataset.tab;
-                switchTab(tabName);
+        function updateParticipantCounts() {
+            Object.keys(registrations).forEach(challengeId => {
+                const countEl = document.querySelector(`[data-challenge="${challengeId}"]`);
+                if (countEl) {
+                    countEl.textContent = registrations[challengeId].length;
+                }
             });
-        });
+        }
 
-        function switchTab(tabName) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            
-            document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
-            document.querySelector(`[data-content="${tabName}"]`).classList.add('active');
+        function updateRegistrationButtons() {
+            const userEmail = localStorage.getItem('zenstars_user_email');
+            if (!userEmail) return;
+
+            Object.keys(registrations).forEach(challengeId => {
+                const isRegistered = registrations[challengeId].some(r => r.email === userEmail);
+                if (isRegistered) {
+                    const btn = document.querySelector(`button[onclick*="${challengeId}"]`);
+                    if (btn) {
+                        btn.classList.add('registered');
+                        btn.innerHTML = '✅ Registered';
+                        btn.disabled = true;
+                    }
+                }
+            });
         }
 
         // Provider selection
@@ -1032,45 +1038,6 @@
             }
         });
 
-        // Commission Calculator
-        function updateCalculator() {
-            const type = document.getElementById('calcType').value;
-            const regFee = parseFloat(document.getElementById('regFee').value) || 0;
-            const participants = parseInt(document.getElementById('participants').value) || 0;
-            const prizeMoney = parseFloat(document.getElementById('prizeMoney').value) || 0;
-
-            // Toggle visibility
-            if (type === 'registration') {
-                document.getElementById('regFeeGroup').style.display = 'block';
-                document.getElementById('prizeGroup').style.display = 'none';
-            } else {
-                document.getElementById('regFeeGroup').style.display = 'none';
-                document.getElementById('prizeGroup').style.display = 'block';
-            }
-
-            let totalCollection, platformFee, prizeAmount, organizerEarning;
-
-            if (type === 'registration') {
-                totalCollection = regFee * participants;
-                platformFee = totalCollection * 0.15;
-                prizeAmount = document.getElementById('prizeMoney') ? parseFloat(document.getElementById('prizeMoney').value) || 0 : 0;
-                // For registration based, prize comes from collection
-                const defaultPrize = totalCollection * 0.4; // 40% for prize
-                prizeAmount = defaultPrize;
-                organizerEarning = totalCollection - platformFee - prizeAmount;
-            } else {
-                totalCollection = prizeMoney;
-                platformFee = totalCollection * 0.15;
-                prizeAmount = totalCollection - platformFee;
-                organizerEarning = 0; // In prize pool model, organizer doesn't earn
-            }
-
-            document.getElementById('totalCollection').textContent = `₹${totalCollection.toFixed(0)}`;
-            document.getElementById('platformFee').textContent = `₹${platformFee.toFixed(0)}`;
-            document.getElementById('prizeAmount').textContent = `₹${prizeAmount.toFixed(0)}`;
-            document.getElementById('organizerEarning').textContent = `₹${organizerEarning.toFixed(0)}`;
-        }
-
         // Scroll functions
         function scrollToGenerator() {
             document.getElementById('generator').scrollIntoView({ behavior: 'smooth' });
@@ -1080,8 +1047,9 @@
             document.getElementById('challenges').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function scrollToCommission() {
-            document.getElementById('commission').scrollIntoView({ behavior: 'smooth' });
+        function selectCategory(category) {
+            document.getElementById('category').value = category;
+            scrollToGenerator();
         }
 
         // Build prompt
@@ -1092,12 +1060,8 @@
             const requirements = document.getElementById('requirements').value;
 
             const categoryNames = {
-                'art': 'Art & Craft',
-                'fitness': 'Fitness',
-                'cooking': 'Cooking',
-                'home': 'Home & Garden',
-                'performance': 'Performance',
-                'treasure': 'Treasure Hunt'
+                'art': 'Art & Craft', 'fitness': 'Fitness', 'cooking': 'Cooking',
+                'home': 'Home & Garden', 'performance': 'Performance', 'treasure': 'Treasure Hunt'
             };
 
             if (currentMode === 'new') {
@@ -1119,42 +1083,16 @@ Provide a complete challenge with:
 Make it fun and suitable for community events!`;
             } else if (currentMode === 'variation') {
                 return `Create a unique variation of a ${categoryNames[category]} challenge:
-Difficulty: ${difficulty}
-Duration: ${duration}
+Difficulty: ${difficulty}, Duration: ${duration}
 ${requirements ? 'Requirements: ' + requirements : ''}
 
-Include:
-1. Name with unique twist
-2. What makes it special
-3. How to participate
-4. Rules
-5. Success tips
-
-Make it exciting and different!`;
+Include: Name with twist, what makes it special, how to participate, rules, and success tips.`;
             } else if (currentMode === 'tips') {
-                return `Expert tips for ${categoryNames[category]} challenge:
-Difficulty: ${difficulty}
-Duration: ${duration}
-
-Include:
-1. Preparation tips
-2. Execution strategies
-3. Common mistakes
-4. Pro techniques
-5. How to stand out
-
-Give actionable advice!`;
+                return `Expert tips for ${categoryNames[category]} challenge (${difficulty}, ${duration}):
+Include: Preparation tips, execution strategies, common mistakes, pro techniques, and how to stand out.`;
             } else if (currentMode === 'judging') {
                 return `Fair judging criteria for ${categoryNames[category]} challenge:
-
-Provide:
-1. Scoring categories (total 100 points)
-2. What judges look for
-3. Tiebreaker criteria
-4. Fairness guidelines
-5. Evaluation rubric
-
-Make it objective and clear!`;
+Provide: Scoring categories (total 100 points), what judges look for, tiebreaker criteria, fairness guidelines, and evaluation rubric.`;
             }
         }
 
@@ -1192,18 +1130,11 @@ Make it objective and clear!`;
                 },
                 body: JSON.stringify({
                     inputs: prompt,
-                    parameters: {
-                        max_new_tokens: 2000,
-                        temperature: 0.7,
-                        return_full_text: false
-                    }
+                    parameters: { max_new_tokens: 2000, temperature: 0.7, return_full_text: false }
                 })
             });
 
-            if (!response.ok) {
-                throw new Error('HuggingFace API call failed');
-            }
-
+            if (!response.ok) throw new Error('HuggingFace API call failed');
             const data = await response.json();
             return Array.isArray(data) ? data[0].generated_text : data.generated_text;
         }
@@ -1223,15 +1154,12 @@ Make it objective and clear!`;
                 })
             });
 
-            if (!response.ok) {
-                throw new Error('Together AI API call failed');
-            }
-
+            if (!response.ok) throw new Error('Together AI API call failed');
             const data = await response.json();
             return data.choices[0].message.content;
         }
 
-        // Main generate function
+        // Generate challenge
         async function generateChallenge() {
             const btn = document.getElementById('generateBtn');
             const resultBox = document.getElementById('resultBox');
@@ -1264,22 +1192,10 @@ Make it objective and clear!`;
                 resultContent.textContent = aiResponse;
                 resultBox.classList.add('visible');
 
-                // Save to history
-                const historyItem = {
-                    content: aiResponse,
-                    mode: currentMode,
-                    category: document.getElementById('category').options[document.getElementById('category').selectedIndex].text,
-                    timestamp: Date.now()
-                };
-                challengeHistory.unshift(historyItem);
-                if (challengeHistory.length > 10) challengeHistory.pop();
-                localStorage.setItem('zenstars_history', JSON.stringify(challengeHistory));
-                loadHistory();
-
                 const successNote = document.createElement('div');
                 successNote.className = 'note-box success-note';
                 successNote.style.marginTop = '20px';
-                successNote.innerHTML = `✅ <strong>Success!</strong> Generated using ${currentProvider.toUpperCase()} API. Saved to history.`;
+                successNote.innerHTML = `✅ <strong>Success!</strong> Generated using ${currentProvider.toUpperCase()} API.`;
                 resultContent.insertAdjacentElement('afterend', successNote);
 
             } catch (error) {
@@ -1332,6 +1248,65 @@ Make it objective and clear!`;
                 alert('📋 Challenge copied to clipboard!');
             });
         }
+
+        // Registration functions
+        function registerChallenge(challengeId, challengeName, fee) {
+            currentChallenge = { id: challengeId, name: challengeName, fee: fee };
+            
+            const platformFee = Math.round(fee * 0.10);
+            const totalFee = fee + platformFee;
+            
+            document.getElementById('regFee').textContent = fee;
+            document.getElementById('platformFee').textContent = platformFee;
+            document.getElementById('totalFee').textContent = totalFee;
+            
+            document.getElementById('registrationModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('registrationModal').classList.remove('active');
+            currentChallenge = null;
+        }
+
+        function confirmRegistration() {
+            const name = document.getElementById('regName').value.trim();
+            const email = document.getElementById('regEmail').value.trim();
+            const phone = document.getElementById('regPhone').value.trim();
+
+            if (!name || !email || !phone) {
+                alert('⚠️ Please fill all required fields!');
+                return;
+            }
+
+            if (!registrations[currentChallenge.id]) {
+                registrations[currentChallenge.id] = [];
+            }
+
+            const registration = {
+                name: name,
+                email: email,
+                phone: phone,
+                timestamp: Date.now()
+            };
+
+            registrations[currentChallenge.id].push(registration);
+            localStorage.setItem('zenstars_registrations', JSON.stringify(registrations));
+            localStorage.setItem('zenstars_user_email', email);
+
+            updateParticipantCounts();
+            closeModal();
+
+            alert(`🎉 Registration successful!\n\nChallenge: ${currentChallenge.name}\nName: ${name}\nEmail: ${email}\n\nYou'll receive confirmation details via email/WhatsApp shortly!`);
+
+            updateRegistrationButtons();
+        }
+
+        // Click outside modal to close
+        document.getElementById('registrationModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
 
         document.getElementById('generateBtn').addEventListener('click', generateChallenge);
     </script>
